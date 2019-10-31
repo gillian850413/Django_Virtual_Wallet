@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            title is provided by inheriting templates
+        {% endblock %}
+    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if IE]><script
+      src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+    </script><![endif]-->
+</head>
+
+<body>
+
+<div><!-- start of container -->
+    <header>
+        <h1>EZ University</h1>
+        <h2>Course Information System</h2>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'courseinfo_instructor_list_urlpattern' %}">
+                    Instructors</a></li>
+            <li>
+                <a href="{% url 'courseinfo_section_list_urlpattern' %}">
+                    Sections</a></li>
+            <li>
+                <a href="{% url 'courseinfo_course_list_urlpattern' %}">
+                    Courses</a></li>
+            <li>
+                <a href="{% url 'courseinfo_semester_list_urlpattern' %}">
+                    Semesters</a></li>
+            <li>
+                <a href="{% url 'courseinfo_student_list_urlpattern' %}">
+                    Students</a></li>
+            <li>
+                <a href="{% url 'courseinfo_registration_list_urlpattern' %}">
+                    Registrations</a></li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+            This is default content!
+        {% endblock %}
+    </main>
+</div><!-- end of container -->
+
+<footer>
+    <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+            <img alt="Creative Commons License" style="border-width:0"
+                 src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"/>
+        </a><br/><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">EZ University Tutorial Examples and Code</span>
+        by
+        <a xmlns:cc="http://creativecommons.org/ns#" href="https://www.ligent.net" property="cc:attributionName"
+           rel="cc:attributionURL">Ligent, LLC</a> are licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike
+            4.0 International License</a>.
+    </p>
+</footer>
+
+</body>
+</html>
+

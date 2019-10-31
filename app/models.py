@@ -116,7 +116,7 @@ class Transaction(models.Model):
         super(Transaction, self).save(*args, **kwargs)
 
     def __str__(self):
-        return '%s %d' % (self.category, self.amount)
+        return '%s %d (%s)' % (self.transaction_type, self.amount, self.category)
 
     class Meta:
         ordering = ['category']
