@@ -15,27 +15,23 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../static/css/magnific-popup.css">
-    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../static/css/themify-icons.css">
-    <link rel="stylesheet" href="../static/css/nice-select.css">
-    <link rel="stylesheet" href="../static/css/flaticon.css">
-    <link rel="stylesheet" href="../static/css/gijgo.css">
-    <link rel="stylesheet" href="../static/css/animate.css">
-    <link rel="stylesheet" href="../static/css/slicknav.css">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../static/css/magnific-popup.css">
+    <link rel="stylesheet" href="../../static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../static/css/themify-icons.css">
+    <link rel="stylesheet" href="../../static/css/nice-select.css">
+    <link rel="stylesheet" href="../../static/css/flaticon.css">
+    <link rel="stylesheet" href="../../static/css/gijgo.css">
+    <link rel="stylesheet" href="../../static/css/animate.css">
+    <link rel="stylesheet" href="../../static/css/slicknav.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
 
 
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
     <!-- header-start -->
     <header>
         <div class="header-area ">
@@ -45,7 +41,7 @@
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
                                 <a href="{% url 'index' %}">
-                                    <img src="../static/img/logo.png" alt="">
+                                    <img src="../../static/img/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -54,15 +50,15 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="{% url 'index' %}">Home</a></li>
-                                        <li><a href="app/activity_page.html">Activity</a></li>
+                                        <li><a href="activity_page.html">Activity</a></li>
                                         <li><a href="">Send & Request <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="app/send_page.html">Send</a></li>
-                                                <li><a href="app/request_page.html">Request</a></li>
+                                                <li><a href="send_page.html">Send</a></li>
+                                                <li><a href="request_page.html">Request</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="app/wallet_page.html">Wallet</a></li>
-                                        <li><a href="app/settings_page.html">Settings</a></li>
+                                        <li><a href="wallet_page.html">Wallet</a></li>
+                                        <li><a href="settings_page.html">Settings</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -84,67 +80,9 @@
     </header>
     <!-- header-end -->
 
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="slider_text ">
-                                <h3> <span>Easy Pay</span> </h3>
-                                <p>With easy pay, you can not only send and transfer money <br> within a second, but also
-                                    track your spendings in few steps.</p>
-                                <a href="app/wallet_page.html" class="boxed-btn3">Check Wallet</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- slider_area_end -->
-
-    <!-- service_area_start -->
-    <div class="service_area">
-        <div class="container p-0">
-            <div class="row no-gutters">
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service">
-                        <div class="icon">
-                            <i class="flaticon-money"></i>
-                        </div>
-                        <h3>Send</h3>
-                        <p>Send your money to your friend within a minute.</p>
-                        <a href="app/send_page.html" class="boxed-btn3-white">Send</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service">
-                        <div class="icon">
-                            <i class="flaticon-money-2"></i>
-                        </div>
-                        <h3>Request</h3>
-                        <p>Request money from your friend without hesitation.</p>
-                        <a href="app/request_page.html" class="boxed-btn3-white">Request</a>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service">
-                        <div class="icon">
-                            <i class="flaticon-bank"></i>
-                        </div>
-                        <h3>Transfer</h3>
-                        <p>Transfer money to bank with only one click.</p>
-                        <a href="app/transfer_page.html" class="boxed-btn3-white">Transfer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- service_area_end -->
-
+    {% block content %}
+        This is default content!
+    {% endblock %}
 
 <!-- footer start -->
     <footer class="footer">
@@ -217,32 +155,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- form itself end -->
 
     <!-- JS here -->
-    <script src="../static/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="../static/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="../static/js/popper.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
-    <script src="../static/js/owl.carousel.min.js"></script>
-    <script src="../static/js/isotope.pkgd.min.js"></script>
-    <script src="../static/js/ajax-form.js"></script>
-    <script src="../static/js/waypoints.min.js"></script>
-    <script src="../static/js/jquery.counterup.min.js"></script>
-    <script src="../static/js/imagesloaded.pkgd.min.js"></script>
-    <script src="../static/js/scrollIt.js"></script>
-    <script src="../static/js/jquery.scrollUp.min.js"></script>
-    <script src="../static/js/wow.min.js"></script>
-    <script src="../static/js/nice-select.min.js"></script>
-    <script src="../static/js/jquery.slicknav.min.js"></script>
-    <script src="../static/js/jquery.magnific-popup.min.js"></script>
-    <script src="../static/js/plugins.js"></script>
-    <script src="../static/js/gijgo.min.js"></script>
+    <script src="../../static/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../../static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../../static/js/popper.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/owl.carousel.min.js"></script>
+    <script src="../../static/js/isotope.pkgd.min.js"></script>
+    <script src="../../static/js/ajax-form.js"></script>
+    <script src="../../static/js/waypoints.min.js"></script>
+    <script src="../../static/js/jquery.counterup.min.js"></script>
+    <script src="../../static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../../static/js/scrollIt.js"></script>
+    <script src="../../static/js/jquery.scrollUp.min.js"></script>
+    <script src="../../static/js/wow.min.js"></script>
+    <script src="../../static/js/nice-select.min.js"></script>
+    <script src="../../static/js/jquery.slicknav.min.js"></script>
+    <script src="../../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../../static/js/plugins.js"></script>
+    <script src="../../static/js/gijgo.min.js"></script>
     <!--contact js-->
-    <script src="../static/js/contact.js"></script>
-    <script src="../static/js/jquery.ajaxchimp.min.js"></script>
-    <script src="../static/js/jquery.form.js"></script>
-    <script src="../static/js/jquery.validate.min.js"></script>
-    <script src="../static/js/mail-script.js"></script>
+    <script src="../../static/js/contact.js"></script>
+    <script src="../../static/js/jquery.ajaxchimp.min.js"></script>
+    <script src="../../static/js/jquery.form.js"></script>
+    <script src="../../static/js/jquery.validate.min.js"></script>
+    <script src="../../static/js/mail-script.js"></script>
 
-    <script src="../static/js/main.js"></script>
+    <script src="../../static/js/main.js"></script>
     <script>
         $('#datepicker').datepicker({
             iconsLibrary: 'fontawesome',
