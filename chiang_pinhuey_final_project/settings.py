@@ -126,7 +126,11 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+STATICFILES_DIRS = (
+    '/Users/gillianchiang/PycharmProjects/chiang_pinhuey_final_project/app/static',
+)
 
-BASE_DIR = '/Users/gillianchiang/PycharmProjects/chiang_pinhuey_final_project/'
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
