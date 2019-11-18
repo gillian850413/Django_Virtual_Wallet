@@ -2,16 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="021e0764-dfc3-4247-be76-f50530e1d12a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/app/activity_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/app/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/app/request_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/app/send_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/app/settings_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/app/transfer_page.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/app/wallet_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/migrations/0003_rename_users_in_app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/migrations/0004_create_groups.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/activity_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/bank_card_info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/bank_card_payment_setting.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/settings_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/transaction_friends_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/transaction_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/transaction_request_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/transaction_send_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/user_profile_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/user_profile_update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/user_registration_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/app/user_reset_pwd_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/staff/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/staff/staff_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/staff/staff_main_page.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chiang_pinhuey_final_project/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/activity_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/request_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/send_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/settings_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/transfer_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/app/wallet_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/wallet_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,19 +52,52 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/index.html">
+        <entry file="file://$PROJECT_DIR$/app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1845">
-              <caret line="123" column="35" selection-start-line="123" selection-start-column="35" selection-end-line="123" selection-end-column="35" />
+            <state relative-caret-position="351">
+              <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/app/base.html">
+        <entry file="file://$PROJECT_DIR$/app/form.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="84" column="18" lean-forward="true" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
+            <state relative-caret-position="429">
+              <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/app/user_registration_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="56" column="34" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/app/user_profile_form.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="497">
+              <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6">
+              <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -47,32 +107,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Ship</find>
-      <find>Wall</find>
-      <find>app_bank</find>
-      <find>account</find>
-      <find>href</find>
-      <find>data</find>
-      <find>static</find>
-      <find>index.hrml</find>
-      <find>make an</find>
-      <find>slider_bg_2</find>
-      <find>check our</find>
-      <find>images</find>
-      <find>plugin</find>
-      <find>js</find>
-      <find>slider_bg_1</find>
-      <find>debug</find>
       <find>css</find>
       <find>img</find>
       <find>fave</find>
+      <find>col-xl-12</find>
+      <find>bradcam_area</find>
+      <find>trans</find>
+      <find>Login</find>
+      <find>home</find>
+      <find>profile</find>
+      <find>sample bu</find>
+      <find>send</find>
+      <find>send_request</find>
+      <find>registration</find>
+      <find>_urlpattern</find>
+      <find>url</find>
+      <find>friend</find>
+      <find>urlpa</find>
+      <find>set</find>
+      <find>setting</find>
+      <find>urlpattern</find>
+      <find>registration_urlpattern</find>
+      <find>user_id</find>
+      <find>User</find>
+      <find>user</find>
+      <find>AUTH_USER_MODEL</find>
+      <find>App</find>
+      <find>form</find>
+      <find>login</find>
+      <find>confirmed_password</find>
+      <find>clean_password</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -81,42 +152,65 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/app/migrations/0002_rename_table.py" />
-        <option value="$PROJECT_DIR$/app/admin.py" />
-        <option value="$PROJECT_DIR$/app/migrations/0002_update_db.py" />
-        <option value="$PROJECT_DIR$/app/migrations/0001_initial.py" />
-        <option value="$PROJECT_DIR$/app/models.py" />
-        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/views.py" />
-        <option value="$PROJECT_DIR$/templates/user_list.html" />
-        <option value="$PROJECT_DIR$/app/urls.py" />
-        <option value="$PROJECT_DIR$/static/css/animate.css" />
-        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py" />
-        <option value="$PROJECT_DIR$/static/css/style.css" />
-        <option value="$PROJECT_DIR$/static/scss/_slider.scss" />
-        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" />
-        <option value="$PROJECT_DIR$/app/static/css/flaticon.css" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/index_test.html" />
-        <option value="$PROJECT_DIR$/templates/app/index_test.html" />
-        <option value="$PROJECT_DIR$/app/views.py" />
-        <option value="$PROJECT_DIR$/templates/app/activity_main_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/send_request_main_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/send_request_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/settings_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/wallet_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/send_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/transfer_page.html" />
-        <option value="$PROJECT_DIR$/templates/app/request_page.html" />
+        <option value="$PROJECT_DIR$/templates/app/activity_page.html" />
+        <option value="$PROJECT_DIR$/templates/app/login_page.html" />
+        <option value="$PROJECT_DIR$/templates/app/edit_user_profile.html" />
+        <option value="$PROJECT_DIR$/templates/app/user_profile.html" />
+        <option value="$PROJECT_DIR$/templates/app/payment_method.html" />
+        <option value="$PROJECT_DIR$/templates/app/user_profile_page.html" />
+        <option value="$PROJECT_DIR$/templates/app/settings_page_new.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/app/base.html" />
+        <option value="$PROJECT_DIR$/templates/app/bank_card_info.html" />
+        <option value="$PROJECT_DIR$/templates/app/user_profile_form.html" />
+        <option value="$PROJECT_DIR$/templates/app/settings_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/settings_page_old.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/user_login_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/admin_index.html" />
+        <option value="$PROJECT_DIR$/admin.py" />
+        <option value="$PROJECT_DIR$/app/templates/app/send_form.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/activity_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/user_profile_update.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/send_request_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/wallet_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/transaction_send_form.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/transaction_request_form.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/transaction_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/transaction_friends_form.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/bank_card_payment.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/bank_card_info.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/settings_page.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/bank_card_payment_setting.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/user_login_form.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/logout.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/staff_login.html" />
+        <option value="$PROJECT_DIR$/app/templates/index.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/base.html" />
+        <option value="$PROJECT_DIR$/app/templates/staff/staff_main_page.html" />
+        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/views.py" />
+        <option value="$PROJECT_DIR$/app/templates/staff/staff_login.html" />
+        <option value="$PROJECT_DIR$/app/templates/staff/base.html" />
+        <option value="$PROJECT_DIR$/app/admin.py" />
+        <option value="$PROJECT_DIR$/app/migrations/0004_create_groups.py" />
+        <option value="$PROJECT_DIR$/app/migrations/0005_update_app_user_model.py" />
+        <option value="$PROJECT_DIR$/app/models.py" />
+        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" />
+        <option value="$PROJECT_DIR$/app/urls.py" />
+        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py" />
+        <option value="$PROJECT_DIR$/app/templates/app/login.html" />
+        <option value="$PROJECT_DIR$/app/templates/app/user_registration_form.html" />
+        <option value="$PROJECT_DIR$/app/form.py" />
+        <option value="$PROJECT_DIR$/app/templates/app/user_profile_form.html" />
+        <option value="$PROJECT_DIR$/app/utils.py" />
+        <option value="$PROJECT_DIR$/app/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="730" />
+    <option name="y" value="23" />
     <option name="width" value="710" />
-    <option name="height" value="900" />
+    <option name="height" value="810" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -139,18 +233,44 @@
             <path>
               <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="staff" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -163,7 +283,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -172,22 +292,22 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/templates/staff" />
+      <recent name="$PROJECT_DIR$/app/migrations" />
+      <recent name="$PROJECT_DIR$/app/templates/app" />
       <recent name="$PROJECT_DIR$/templates/app" />
       <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/app/migrations" />
-      <recent name="$PROJECT_DIR$/static" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/templates/staff" />
+      <recent name="$PROJECT_DIR$/app/templates" />
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/templates/app" />
       <recent name="$PROJECT_DIR$/static/css" />
-      <recent name="$PROJECT_DIR$/app" />
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/app/static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -241,32 +361,39 @@
       <workItem from="1572478213095" duration="16702000" />
       <workItem from="1572501588754" duration="1000" />
       <workItem from="1572501618264" duration="5505000" />
-      <workItem from="1572509057862" duration="12376000" />
+      <workItem from="1572509057862" duration="12436000" />
+      <workItem from="1572659983637" duration="121000" />
+      <workItem from="1572820637206" duration="146000" />
+      <workItem from="1572833411315" duration="26273000" />
+      <workItem from="1573415803485" duration="29967000" />
+      <workItem from="1573685670104" duration="3723000" />
+      <workItem from="1573689841695" duration="7511000" />
+      <workItem from="1573703227895" duration="24513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42596000" />
+    <option name="totallyTimeSpent" value="134910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2360515" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23390558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286908" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32729805" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="manage.py@chiang_pinhuey_final_project" order="9" weight="0.41225627" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32729805" />
+      <window_info anchor="bottom" id="manage.py@chiang_pinhuey_final_project" order="9" sideWeight="0.49928468" visible="true" weight="0.2632312" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.41225627" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32729805" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32729805" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -278,21 +405,21 @@
       <window_info anchor="right" id="SciView" order="6" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2360515" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23390558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286908" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32729805" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="manage.py@chiang_pinhuey_final_project" order="9" visible="true" weight="0.41225627" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32729805" />
+      <window_info anchor="bottom" id="manage.py@chiang_pinhuey_final_project" order="9" sideWeight="0.49928468" visible="true" weight="0.2632312" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5007153" side_tool="true" weight="0.41225627" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.32729805" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32729805" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -308,129 +435,9 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/css/magnific-popup.css" />
-    <entry file="file://$PROJECT_DIR$/static/css/nice-select.css" />
-    <entry file="file://$PROJECT_DIR$/static/css/owl.carousel.min.css" />
-    <entry file="file://$PROJECT_DIR$/static/css/slicknav.css" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_btn.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_department.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_elements.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_emergency_contact.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_experts.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_extend.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_footer.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_header.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_mixins.scss" />
-    <entry file="file://$PROJECT_DIR$/static/scss/_offers.scss" />
-    <entry file="file://$PROJECT_DIR$/static/css/style.map" />
-    <entry file="file://$PROJECT_DIR$/static/img/banner/banner2.png" />
-    <entry file="file://$PROJECT_DIR$/static/img/banner/banner.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/scss/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/scss/_slider.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="1234" column="45" selection-start-line="1234" selection-start-column="45" selection-end-line="1234" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///Applications/anaconda3/envs/wfo_final_project/lib/python3.7/socket.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6640">
-          <caret line="588" selection-start-line="588" selection-end-line="588" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="66" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/fonts/Flaticon.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/fonts/flaticon.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/vendor/jquery-1.12.4.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/fonts/flaticon.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/css/flaticon.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/flaticon.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/footer_logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/favicon.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/comment/comment_1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/elements/g6.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/elements/f6.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/instragram/2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/offers/2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/post/post_2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/rooms/2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/img/testmonial/1.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/urls.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/img/post/post_2.png" />
+    <entry file="file://$PROJECT_DIR$/app/static/img/rooms/2.png" />
+    <entry file="file://$PROJECT_DIR$/app/static/img/testmonial/1.png" />
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -438,76 +445,266 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app/request_page.html" />
+    <entry file="file://$PROJECT_DIR$/templates/app/transfer_page.html" />
+    <entry file="file://$PROJECT_DIR$/app/static/css/style.map">
+      <provider editor-type-id="sourcemapFileViewerProvider" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="34" lean-forward="true" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/theme-default.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="2500" column="20" selection-start-line="2500" selection-start-column="20" selection-end-line="2500" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5chars.ent">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="63" column="10" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app/payment_method.html" />
+    <entry file="file://$PROJECT_DIR$/templates/app/user_profile_page.html" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/admin_index.html" />
+    <entry file="file://$PROJECT_DIR$/admin.py" />
+    <entry file="file://$PROJECT_DIR$/app/templates/app/activity_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/settings_page_old.html" />
+    <entry file="file://$PROJECT_DIR$/app/templates/app/wallet_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/user_reset_pwd_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="47" selection-start-line="29" selection-start-column="47" selection-end-line="29" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/transaction_request_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="true" selection-end-line="20" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/bank_card_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/transaction_friends_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/transaction_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="19" selection-start-line="19" selection-end-line="43" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/settings_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="26" column="88" selection-start-line="26" selection-start-column="88" selection-end-line="26" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/transaction_send_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/user_profile_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="49" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/bank_card_payment_setting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/logout.html" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/web-forms2.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="604" column="16" selection-start-line="604" selection-start-column="16" selection-end-line="604" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/migrations/0003_rename_users_in_app.py" />
+    <entry file="file://$PROJECT_DIR$/app/templates/app/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="68" column="38" lean-forward="true" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/views.py" />
+    <entry file="file://$PROJECT_DIR$/app/static/js/gijgo.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret column="1850" selection-start-column="1850" selection-end-column="1850" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1677">
+          <caret line="68" column="14" selection-end-line="215" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/staff/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="71" column="25" lean-forward="true" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/staff/staff_main_page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="75" column="44" lean-forward="true" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/migrations/0004_update_app_user_model.py" />
+    <entry file="file://$PROJECT_DIR$/app/migrations/0004_add_profile_to_models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/staff/staff_login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/migrations/0003_create_groups.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="132" column="19" selection-start-line="132" selection-start-column="19" selection-end-line="132" selection-end-column="19" />
+        <state relative-caret-position="1132">
+          <caret line="124" lean-forward="true" selection-start-line="124" selection-end-line="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/form.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-763">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/user_registration_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="56" column="34" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/app/user_profile_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="35" column="66" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="351">
+          <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
           <folding>
-            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#0#59#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/request_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="58" selection-start-line="10" selection-start-column="58" selection-end-line="10" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/transfer_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/send_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="62" selection-start-line="10" selection-start-column="62" selection-end-line="10" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/activity_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/settings_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="6" lean-forward="true" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/wallet_page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/app/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="84" column="18" lean-forward="true" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1845">
-          <caret line="123" column="35" selection-start-line="123" selection-start-column="35" selection-end-line="123" selection-end-column="35" />
         </state>
       </provider>
     </entry>

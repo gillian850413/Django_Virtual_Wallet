@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12"></div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+
+    <!-- login area start  -->
+    <section class="blog_area section-padding" style="background:#EBF5FB ">
+    <div class="container">
+        <div class="col-xl-12">
+            <div class="row justify-content-md-center">
+                <div class="col-md-6 blog_details" style="background:white">
+                    <h3>Reset Password</h3>
+                    <hr class="colorgraph"><br>
+                    <form class="form-contact contact_form" action="#" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="password" id="password" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input class="form-control valid" name="confirm_pwd" id="confirm_pwd" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'" placeholder="Confirm Password" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm boxed-btn">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- login area end  -->
+{% endblock %}

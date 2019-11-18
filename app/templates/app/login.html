@@ -1,0 +1,75 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12"></div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+
+    <!-- login area start  -->
+    <section class="blog_area section-padding" style="background:#EBF5FB ">
+    <div class="container">
+        <div class="col-xl-12">
+            <div class="row justify-content-md-center">
+                <div class="col-md-6 blog_details"  style="background:white">
+                    <h3>Please Sign In</h3>
+                    <hr class="colorgraph"><br>
+                    <form class="form-contact contact_form" method="post" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                 {% if form.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        <ul>
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <li>{{ error|escape }}</li>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            {% for error in form.non_field_errors %}
+                                                <li>{{ error|escape }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                                {{ form.username.label_tag }}
+                                <div class="form-group">
+                                    <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="30"
+                                               name="{{ form.username.html_name }}" value=""
+                                               type="text"/>
+                                </div>
+                                {{ form.password.label_tag }}
+                                <div class="form-group">
+                                    <input class="form-control" id="{{ form.password.id_for_label }}" maxlength="30"
+                                               name="{{ form.password.html_name }}" value=""
+                                               type="password"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm boxed-btn">Sign In</button>
+                        </div>
+                        <div class="mt-3">Don't have an account?
+                            <a href="{% url 'registration'%}">Sign Up</a>
+                        </div>
+                        <div class="mt-3">Forget Your Password?
+                            <a href="{% url 'reset_password' %}" >Reset Password</a>
+                        </div>
+                        <hr>
+                        <div class="mt-3">Have a staff account?
+                            <a href="{% url 'staff_login' %}">Staff Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    <!-- login area end  -->
+{% endblock %}

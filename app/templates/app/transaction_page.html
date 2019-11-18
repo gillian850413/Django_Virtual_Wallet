@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_area breadcam_bg bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Send & Request</h3>
+                        <p><a href="{% url 'index' %}">Home /</a> Send & Request</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+
+    <!-- business_expert_area_start  -->
+    <div class="business_expert_area">
+        <div class="business_tabs_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <ul class="nav" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'send' %}active{% endif %}"
+                                   id="send-tab" href="{% url 'send' %}" role="tab" >Send Money</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'request' %}active{% endif %}"
+                                   id="request-tab" href="{% url 'request' %}" role="tab" >Request Money</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'friends' %}active{% endif %}"
+                                   id="friend-tab" href="{% url 'friends' %}" role="tab" >View Friends</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if nbar == 'send' %}
+            {% block send %} default {% endblock %}
+        {% elif nbar == 'request' %}
+            {% block request %} default {% endblock %}
+        {% elif nbar == 'friends' %}
+            {% block friends %} default {% endblock %}
+        {% endif %}
+
+
+    </div>
+
+    <!-- business_expert_area_end  -->
+{% endblock %}
