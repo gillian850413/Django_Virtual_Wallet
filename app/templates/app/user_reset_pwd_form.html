@@ -19,21 +19,32 @@
                 <div class="col-md-6 blog_details" style="background:white">
                     <h3>Reset Password</h3>
                     <hr class="colorgraph"><br>
-                    <form class="form-contact contact_form" action="#" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="form-contact contact_form" action="{% url 'reset_password' %}" method="post" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-12">
+                                {% if form.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        <ul>
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <li>{{ error|escape }}</li>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-sm-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'" placeholder="Email" required>
+                                    <input class="form-control" id="{{ form.password.id_for_label }}" maxlength="45"
+                                               name="{{ form.password.html_name }}" placeholder="Password" type="password"/>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
-                                    <input class="form-control valid" name="password" id="password" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" placeholder="Password" required>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control valid" name="confirm_pwd" id="confirm_pwd" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'" placeholder="Confirm Password" required>
+                                    <input class="form-control" id="{{ form.confirm_password.id_for_label }}" maxlength="45"
+                                               name="{{ form.confirm_password.html_name }}" placeholder="Confirm Password" type="password"/>
                                 </div>
                             </div>
                         </div>

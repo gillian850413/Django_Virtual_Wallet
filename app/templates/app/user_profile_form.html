@@ -1,54 +1,28 @@
-{% extends 'app/settings_page.html' %}
+{% extends 'app/user_profile.html' %}
 
-{% block profile %}
+{% block profile_form %}
+    <div class="blog_item_img">
+        <img class="card-img rounded-0" src="../../static/img/banner/profile_banner.png" alt="">
+        <a href="#" class="blog_item_date">
+            <h3><div class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></div></h3>
 
-<div class="whole-wrap">
-    <div class="container box_1170">
-        <div class="row justify-content-md-center">
-            <div class="col-lg-8">
-                <h3 class="mb-30">Form Element</h3>
-                <form action="#">
-                    <div class="input-group-icon mt-10">
-                        <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input type="text" name="username" placeholder="Username"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" required
-                            class="single-input">
-                    </div>
-                    <div class="input-group-icon mt-10">
-                        <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input type="text" name="first_name" placeholder="First Name"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required
-                            class="single-input">
-                    </div>
-                    <div class="input-group-icon mt-10">
-                        <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                        <input type="text" name="last_name" placeholder="Last Name"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required
-                            class="single-input">
-                    </div>
-                    <div class="input-group-icon mt-10">
-                        <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
-                        <input type="text" name="email" placeholder="Email Address"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" required
-                            class="single-input">
-                    </div>
-                     <div class="input-group-icon mt-10">
-                        <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
-                        <input type="date" name="birthday" placeholder="Birthday"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Birthday'" required
-                            class="single-input">
-                    </div>
-                    <div class="input-group-icon mt-10">
-                        <div class="icon"><i class="fa fa-home" aria-hidden="true"></i></div>
-                        <input type="text" name="address" placeholder="Address"
-                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Birthday'" required
-                            class="single-input">
-                    </div>
-                </form>
-            </div>
-        </div>
+        </a>
     </div>
-</div>
-
-
+    <div class="blog_details">
+        <h2>{{ user }}'s Profile</h2><hr>
+        <form action="#">
+            {% csrf_token %}
+            <ul class="list cat-list">
+                <li><b style="color: black">First Name:</b>&emsp;{{ user.first_name}}</li><hr>
+                <li><b style="color: black">Last Name:</b>&emsp;{{ user.last_name}}</li><hr>
+                <li><b style="color: black">Email:</b>&emsp;{{ user.email}}</li><hr>
+                <li><b style="color: black">Birthday:</b>&emsp;{{ user.profile.birthday|date:'Y/m/d'}}</li><hr>
+                <li><b style="color: black">Address:</b>&emsp;{{ user.profile.address}}</li><hr>
+            </ul>
+            <div class="input-group-icon mt-10">
+                 <a href="{% url 'profile_update' %}"
+                    class="btn rounded-0 btn-outline-primary">Update Profile</a>
+            </div>
+        </form>
+    </div>
 {% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'app/settings_page.html' %}
+{% load static from staticfiles %}
+
+{% block bank_card %}
+
+<!--================Blog Area =================-->
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row" >
+                <div class="col-lg-8 mb-5 mb-lg-0" >
+                    <article class="blog_item" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3><div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div></h3>
+
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <h2>Bank Information</h2><hr>
+                            <form action="#">
+                                <ul class="list cat-list">
+                                    <li><b style="color: black">Account Holder First Name:</b>&emsp;{{ bank.owner_first_name}}</li><hr>
+                                    <li><b style="color: black">Account Holder Last Name:</b>&emsp;{{ bank.owner_first_name}}</li><hr>
+                                    <li><b style="color: black">Routing Number:</b>&emsp;{{ bank.routing_number}}</li><hr>
+                                    <li><b style="color: black">Account Number:</b>&emsp;{{ bank.account_number}}</li><hr>
+                                </ul>
+                                <a href="{% url 'bank_delete' bank.pk %}"
+                                   class="btn rounded-0 btn-outline-danger">Delete Bank</a>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">User Account</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="{% url 'wallet' %}">
+                                        <p>View Balance</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'send' %}">
+                                        <p>View Activity</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'reset_password' %}" >
+                                        <p>Change Password</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Blog Area =================-->
+{% endblock %}

@@ -1,15 +1,16 @@
 from django.db import models
-from django.core.validators import MaxLengthValidator, MinLengthValidator
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.utils.timezone import now
 from django.contrib.auth.models import User, AbstractUser
+from django.urls import reverse
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     birthday = models.DateField(default=None)
     address = models.CharField(max_length=255, default=None)
+
+    def __str__(self):
+        return self.user.username
 
 
 class Account(models.Model):
@@ -28,12 +29,20 @@ class Account(models.Model):
 
 class Bank(models.Model):
     bank_id = models.AutoField(primary_key=True)
-    routing_number = models.IntegerField(validators=[MinLengthValidator(9), MaxLengthValidator(9)])
-    account_number = models.IntegerField(validators=[MinLengthValidator(10), MaxLengthValidator(12)])
-    user = models.ForeignKey(User, related_name='bank_owner', on_delete=models.PROTECT)
+    owner_first_name = models.CharField(max_length=255, default=None)
+    owner_last_name = models.CharField(max_length=255, default=None)
+    routing_number = models.CharField(max_length=9, default=None)
+    account_number = models.CharField(max_length=10, default=None)
+    user = models.ForeignKey(User, related_name='bank_user', on_delete=models.PROTECT)
 
     def __str__(self):
-        return 'Bank ****%d' % self.account_number[:-4]
+        return '****%s' % self.account_number[:-4]
+
+    def get_absolute_url(self):
+        return reverse('bank_detail', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse('bank_delete', kwargs={'pk': self.pk})
 
     class Meta:
         unique_together = ('routing_number', 'account_number')
@@ -48,15 +57,27 @@ Card_Type = (
 class Card(models.Model):
     card_id = models.AutoField(primary_key=True)
     card_type = models.CharField(max_length=45, choices=Card_Type)
-    card_number = models.IntegerField(validators=[MinLengthValidator(16), MaxLengthValidator(16)], unique=True)
+    card_number = models.CharField(max_length=16, default=None)
     owner_first_name = models.CharField(max_length=45)
     owner_last_name = models.CharField(max_length=45)
-    user = models.ForeignKey(User, related_name='card_owner', on_delete=models.PROTECT)
+    security_code = models.CharField(max_length=3, default=None)
+    expiration_date = models.DateField(default=None)
+    user = models.ForeignKey(User, related_name='card_user', on_delete=models.PROTECT)
+
+    def get_absolute_url(self):
+        return reverse('card_detail', kwargs={'pk': self.pk})
+
+    def get_update_url(self):
+        return reverse('card_update', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse('card_delete', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return '%s ****%d' % (self.card_type, self.card_number[:-4])
+        return '************%s' % (self.card_number[:-12])
 
     class Meta:
+        unique_together = ('card_type', 'owner_first_name', 'owner_last_name', 'card_number', 'security_code', 'expiration_date')
         ordering = ['card_type', 'card_number']
 
 

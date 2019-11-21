@@ -1,19 +1,41 @@
-{% extends 'app/base.html' %}
+{% extends 'app/user_profile.html' %}
 
-{% block content %}
-    <!-- bradcam_area_start  -->
-    <div class="bradcam_area breadcam_bg bradcam_overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>Edit User Profile</h3>
-                        <p><a href="{% url 'index' %}">Home /</a> Edit User Profile</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+{% block profile_form %}
+    <div class="blog_item_img">
+        <img class="card-img rounded-0" src="../../../static/img/banner/profile_banner2.png" alt="">
+        <a href="#" class="blog_item_date">
+            <h3><div class="icon"><i class="fa fa-user-circle" aria-hidden="true"></i></div></h3>
+
+        </a>
     </div>
-    <!-- bradcam_area_end  -->
-
+    <div class="blog_details">
+        <h2>Edit Profile</h2><hr>
+        <form action="{% url 'profile_update' %}" method="post">
+            {% csrf_token %}
+            <div class="input-group-icon mt-10">
+                <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                <input type="text" class="single-input" name="first_name" value="{{ form.first_name.value}}" required>
+            </div>
+            <div class="input-group-icon mt-10">
+                <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                <input type="text" class="single-input" name="last_name" value="{{ form.last_name.value}}" required>
+            </div>
+            <div class="input-group-icon mt-10">
+                <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                <input type="text" class="single-input" name="email" value="{{ form.email.value}}" required>
+            </div>
+             <div class="input-group-icon mt-10">
+                <div class="icon"><i class="fa fa-calendar" aria-hidden="true"></i></div>
+                <input type="date" class="single-input" name="birthday" value="{{ profile_form.birthday.value|date:'Y-m-d'}}" required>
+            </div>
+            <div class="input-group-icon mt-10">
+                <div class="icon"><i class="fa fa-home" aria-hidden="true"></i></div>
+                <input type="text" class="single-input" name="address" value="{{ profile_form.address.value}}" required>
+            </div>
+            <br>
+            <div class="input-group-icon mt-10">
+                <button class="button rounded-0 btn btn-outline-primary" type="submit">Edit</button> &nbsp;&nbsp;
+            </div>
+        </form>
+    </div>
 {% endblock %}
