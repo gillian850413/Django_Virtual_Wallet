@@ -13,13 +13,27 @@ class Profile(models.Model):
         return self.user.username
 
 
-class Account(models.Model):
-    account_id = models.AutoField(primary_key=True)
+Method_Type = (
+    ('account', 'Easy Pay Account'),
+    ('card', 'Cards'),
+    ('bank', 'Bank'),
+)
+
+
+class PaymentMethod(models.Model):
+    method_id = models.AutoField(primary_key=True)
+    method_type = models.CharField(max_length=255, default=None, choices=Method_Type)
+    user = models.ForeignKey(User, related_name='payment_user', on_delete=models.PROTECT)
+
+
+class Account(PaymentMethod):
     balance = models.FloatField(default=0.00)
-    user = models.ForeignKey(User, related_name='account_owner', on_delete=models.PROTECT)
 
     def __str__(self):
-        return '%d' % self.balance
+        return self.user.username
+
+    def get_absolute_url(self):
+        return reverse('wallet', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         # ensure that the database only stores 2 decimal places
@@ -27,13 +41,11 @@ class Account(models.Model):
         super(Account, self).save(*args, **kwargs)
 
 
-class Bank(models.Model):
-    bank_id = models.AutoField(primary_key=True)
+class Bank(PaymentMethod):
     owner_first_name = models.CharField(max_length=255, default=None)
     owner_last_name = models.CharField(max_length=255, default=None)
     routing_number = models.CharField(max_length=9, default=None)
     account_number = models.CharField(max_length=10, default=None)
-    user = models.ForeignKey(User, related_name='bank_user', on_delete=models.PROTECT)
 
     def __str__(self):
         return '****%s' % self.account_number[:-4]
@@ -54,15 +66,13 @@ Card_Type = (
 )
 
 
-class Card(models.Model):
-    card_id = models.AutoField(primary_key=True)
+class Card(PaymentMethod):
     card_type = models.CharField(max_length=45, choices=Card_Type)
     card_number = models.CharField(max_length=16, default=None)
     owner_first_name = models.CharField(max_length=45)
     owner_last_name = models.CharField(max_length=45)
     security_code = models.CharField(max_length=3, default=None)
     expiration_date = models.DateField(default=None)
-    user = models.ForeignKey(User, related_name='card_user', on_delete=models.PROTECT)
 
     def get_absolute_url(self):
         return reverse('card_detail', kwargs={'pk': self.pk})
@@ -89,7 +99,7 @@ Transaction_Type = (
 
 
 Categories = (
-    ('bank', 'Bank Transactions'),
+    ('bank', 'Bank Transfer'),
     ('utilities', 'Bills & Utilities'),
     ('transportation', 'Auto & Transport'),
     ('groceries', 'Groceries'),
@@ -103,14 +113,6 @@ Categories = (
 )
 
 
-Payment_Method = (
-    ('account', 'Account'),
-    ('credit', 'Credit Card'),
-    ('debit', 'Debit Card'),
-    ('bank', 'Bank'),
-)
-
-
 class Transaction(models.Model):
     transaction_id = models.AutoField(primary_key=True)
     transaction_type = models.CharField(max_length=45, choices=Transaction_Type, default='')
@@ -118,12 +120,10 @@ class Transaction(models.Model):
     amount = models.FloatField(default=0.00)
     description = models.CharField(max_length=200)
     recipients = models.CharField(max_length=45)  # another user, friend, bank
-    payment_method = models.CharField(max_length=45, choices=Payment_Method, default='Account')
     create_date = models.DateTimeField(default=now, editable=False)
     is_complete = models.BooleanField(default=False)
-    account = models.ForeignKey(Account, related_name='accounts', on_delete=models.PROTECT, default=0.00)
-    card = models.ForeignKey(Card, related_name='cards', on_delete=models.PROTECT)
-    bank = models.ForeignKey(Bank, related_name='banks', on_delete=models.PROTECT)
+    user = models.ForeignKey(User, related_name='tran_user', on_delete=models.PROTECT)
+    payment_method = models.ForeignKey(PaymentMethod, related_name='payment_method', on_delete=models.PROTECT, default='')
 
     def save(self, *args, **kwargs):
         # ensure that the database only stores 2 decimal places

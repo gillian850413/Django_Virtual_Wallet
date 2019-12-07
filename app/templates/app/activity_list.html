@@ -1,0 +1,57 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_area breadcam_bg bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Activity</h3>
+                        <p><a href="{% url 'index' %}">Home /</a> Activity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+
+	<!-- Start Align Area -->
+    <section>
+        <div class="whole-wrap">
+            <div class="container box_1170">
+                <div class="section-top-border">
+                    <h2 class="mb-30"><b style="color: black;">All Transactions</b></h2>
+                    <div class="progress-table-wrap">
+                        <div class="progress-table">
+
+                            <div class="table-head">
+                                <div class="date">Date</div>
+                                <div class="activity">Activity</div>
+                                <div class="category">Category</div>
+                                <div class="amount">Amount</div>
+                            </div>
+                            {% for tran in tran_list %}
+                                <div class="table-row">
+                                    <div class="date">{{ tran.create_date }}</div>
+                                    <div class="activity">{{ tran.description }}</div>
+                                    <div class="category">{{ tran.category }}</div>
+                                    <div class="amount">{{ tran.amount }}</div>
+                                </div>
+                                {% empty %}
+                                <div class="table-row">
+                                    <div class="date"> </div>
+                                    <div class="activity"> There is no transaction.</div>
+                                    <div class="category"> </div>
+                                    <div class="amount"> </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	<!-- End Align Area -->
+
+{% endblock %}

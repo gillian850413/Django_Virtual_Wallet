@@ -75,11 +75,11 @@ class UserResetPwdForm(forms.ModelForm):
         model = User
         fields = ('password', )
 
-    def clean_username(self):
-        username = self.cleaned_data['username'].strip()
-        if not User.objects.filter(username=username).exists():
-            self.add_error('username', 'Username does not exist.')
-        return username
+    # def clean_username(self):
+    #     username = self.cleaned_data['username'].strip()
+    #     if not User.objects.filter(username=username).exists():
+    #         self.add_error('username', 'Username does not exist.')
+    #     return username
 
     def clean(self):
         cleaned_data = super(UserResetPwdForm, self).clean()
@@ -126,7 +126,7 @@ class BankCreateForm(forms.ModelForm):
 
     class Meta:
         model = Bank
-        exclude = ['user']
+        exclude = ['user', 'method_type']
         fields = '__all__'
 
     def clean_routing_number(self):
@@ -163,7 +163,7 @@ class CardCreateForm(forms.ModelForm):
 
     class Meta:
         model = Card
-        exclude = ['user']
+        exclude = ['user', 'method_type']
         fields = '__all__'
 
     def clean_card_type(self):
@@ -188,7 +188,10 @@ class CardCreateForm(forms.ModelForm):
             return self.cleaned_data['security_code'].strip()
 
     def clean_expiration_date(self):
-        return self.cleaned_data['expiration_date']
+        if self.cleaned_data['expiration_date'] < date.today():
+            self.add_error('birthday', 'Please input a valid card.')
+        else:
+            return self.cleaned_data['expiration_date']
 
 
 class CardUpdateForm(forms.ModelForm):
@@ -196,7 +199,6 @@ class CardUpdateForm(forms.ModelForm):
         model = Card
         exclude = ['user']
         fields = ('owner_first_name', 'owner_last_name', 'expiration_date')
-
 
     def clean_owner_first_name(self):
         return self.cleaned_data['owner_first_name'].strip()
@@ -209,4 +211,20 @@ class CardUpdateForm(forms.ModelForm):
             self.add_error('expiration_date', 'Please input a valid card.')
         else:
             return self.cleaned_data['expiration_date']
+
+
+# check if the target user exist or not
+class UserValidationForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username',)
+
+    def clean_username(self):
+        username = self.cleaned_data['username'].strip()
+        return username
+
+class SendMoneyForm(forms.ModelForm):
+    class Meta:
+        model = Transaction
+        fields = '__all__'
 

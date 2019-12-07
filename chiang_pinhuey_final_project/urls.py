@@ -9,8 +9,6 @@ from app.views import (
     UserLogout,
     UserRegistration,
     UserResetPwd,
-    StaffLogin,
-    StaffLogout
 )
 
 urlpatterns = [
@@ -22,13 +20,10 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
 
-    path('user/login/', UserLogin.as_view(template_name='app/login.html'), name='user_login'),
-    path('user/logout/', UserLogout.as_view(), name='user_logout'),
-    path('user/registration/', UserRegistration.as_view(), name='registration'),
-    path('user/reset-password/', UserResetPwd.as_view(), name='reset_password'),
-
-    path('staff/login/', StaffLogin.as_view(template_name='staff/staff_login.html'), name='staff_login'),
-    path('staff/logout/', StaffLogout.as_view(), name='staff_logout'),
+    path('login/', UserLogin.as_view(template_name='app/login.html'), name='user_login'),
+    path('logout/', UserLogout.as_view(), name='user_logout'),
+    path('registration/', UserRegistration.as_view(), name='registration'),
+    path('reset-password/', UserResetPwd.as_view(), name='reset_password'),
 
     path('', include('app.urls'))
 

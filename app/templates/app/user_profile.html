@@ -1,8 +1,22 @@
-{% extends 'app/settings_page.html' %}
+{% extends 'app/base.html' %}
 
-{% block profile %}
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_area breadcam_bg bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>User Profile</h3>
+                        <p><a href="{% url 'index' %}">Home /</a> User Profile</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
 
-<!--================Blog Area =================-->
+    <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row" >
@@ -13,8 +27,6 @@
                                 default content
                             {% endblock %}
                         </article>
-
-
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -39,14 +51,10 @@
                                 </li>
                             </ul>
                         </aside>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--================Blog Area =================-->
-
-
 
 {% endblock %}

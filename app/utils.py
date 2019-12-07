@@ -1,32 +1,3 @@
-from django.shortcuts import redirect, render
-
-
-class ObjectCreateMixin:
-    form_class = None
-    template_name = ''
-
-    # return a form
-    def get(self, request):
-        return render(
-            request,
-            self.template_name,
-            {'form': self.form_class}
-        )
-
-    # after the user submit, will generate a post
-    def post(self, request):
-        bound_form = self.form_class(request.POST) #create new database object
-        if bound_form.is_valid():
-            new_object = bound_form.save()
-            return redirect(new_object) # redirect us to detail page with that object
-        else:
-            return render(
-                request,
-                self.template_name,
-                {'form': bound_form}
-            )
-
-
 class PageLinksMixin:
     page_kwarg = 'page'
 

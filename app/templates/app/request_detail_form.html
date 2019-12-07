@@ -1,29 +1,37 @@
-{% extends 'app/base.html' %}
+{% extends 'app/transaction_page.html' %}
+{% load static from staticfiles %}
 
-{% block content %}
-    <!-- bradcam_area_start  -->
-    <div class="bradcam_area breadcam_bg bradcam_overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>Wallet</h3>
-                        <p><a href="{% url 'index' %}">Home /</a> Wallet</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- bradcam_area_end  -->
-
-
+{% block request %}
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row" >
                 <div class="col-lg-8 mb-5 mb-lg-0" >
-                    {% block wallet_info %}
-                        default content
-                    {% endblock %}
+                    <article class="blog_item" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3><div class="icon"><i class="flaticon-money-2"></i></div></h3>
+
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <h2>Request Money</h2><hr>
+
+                            <form class="form-contact contact_form" action="{% url 'send_detail' user.id%}" method="post" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            Username: {{ user.username }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </article>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
@@ -57,5 +65,4 @@
             </div>
         </div>
     </section>
-
 {% endblock %}

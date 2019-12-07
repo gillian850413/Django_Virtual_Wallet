@@ -1,94 +1,61 @@
-{% extends 'app/settings_page.html' %}
+{% extends 'app/wallet_page.html' %}
 {% load static from staticfiles %}
 
-{% block bank_card %}
+{% block wallet_info %}
 
 <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
-        <div class="container">
-            <div class="row" >
-                <div class="col-lg-8 mb-5 mb-lg-0" >
-                    <article class="blog_item" >
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                                <h3><div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div></h3>
+    <article class="blog_item" >
+        <div class="blog_item_img">
+            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+            <a href="#" class="blog_item_date">
+                <h3><div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div></h3>
 
-                            </a>
-                        </div>
-                        <div class="blog_details">
-                            <h2>Add Bank</h2><hr>
-                            <form action="{% url 'bank_create' %}" method="post">
-                                {% csrf_token %}
-                                {% if form.errors %}
-                                    <div class="alert alert-danger" role="alert">
-                                        <ul>
-                                            {% for field in form %}
-                                                {% for error_msg in field.errors %}
-                                                    <li>{{ error_msg|escape }}</li>
-                                                {% endfor %}
-                                            {% endfor %}
-                                            {% for error_msg in form.non_field_errors %}
-                                                <li>{{ error_msg|escape }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                                    <input type="text" class="single-input" name="{{ form.owner_first_name.html_name }}"
-                                           id="{{ form.owner_first_name.id_for_label }}" placeholder="Account Holder First Name" required>
-                                </div>
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-                                    <input type="text" class="single-input" name="{{ form.owner_last_name.html_name }}"
-                                           id="{{ form.owner_last_name.id_for_label }}" placeholder="Account Holder Last Name" required>
-                                </div>
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div>
-                                    <input type="text" class="single-input" name="{{ form.routing_number.html_name }}"
-                                           id="{{ form.routing_number.id_for_label }}" placeholder="Routing number (9 digits)" required>
-                                </div>
-                                <div class="input-group-icon mt-10">
-                                    <div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div>
-                                    <input type="text" class="single-input" name="{{ form.account_number.html_name }}"
-                                           id="{{ form.account_number.id_for_label }}" placeholder="Account Number (10 digits)" required>
-                                </div>
-                                <br>
-                                <div class="input-group-icon mt-10">
-                                    <button class="button rounded-0 btn btn-outline-primary" type="submit">Add</button> &nbsp;&nbsp;
-                                </div>
-                            </form>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">User Account</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="{% url 'wallet' %}">
-                                        <p>View Balance</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'send' %}">
-                                        <p>View Activity</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'reset_password' %}" >
-                                        <p>Change Password</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
-    </section>
+        <div class="blog_details">
+            <h2>Add Bank</h2><hr>
+            <form action="{% url 'bank_create' %}" method="post">
+                {% csrf_token %}
+                {% if form.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            {% for field in form %}
+                                {% for error_msg in field.errors %}
+                                    <li>{{ error_msg|escape }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                            {% for error_msg in form.non_field_errors %}
+                                <li>{{ error_msg|escape }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="input-group-icon mt-10">
+                    <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                    <input type="text" class="single-input" name="{{ form.owner_first_name.html_name }}"
+                           id="{{ form.owner_first_name.id_for_label }}" placeholder="Account Holder First Name" required>
+                </div>
+                <div class="input-group-icon mt-10">
+                    <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
+                    <input type="text" class="single-input" name="{{ form.owner_last_name.html_name }}"
+                           id="{{ form.owner_last_name.id_for_label }}" placeholder="Account Holder Last Name" required>
+                </div>
+                <div class="input-group-icon mt-10">
+                    <div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div>
+                    <input type="text" class="single-input" name="{{ form.routing_number.html_name }}"
+                           id="{{ form.routing_number.id_for_label }}" placeholder="Routing number (9 digits)" required>
+                </div>
+                <div class="input-group-icon mt-10">
+                    <div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div>
+                    <input type="text" class="single-input" name="{{ form.account_number.html_name }}"
+                           id="{{ form.account_number.id_for_label }}" placeholder="Account Number (10 digits)" required>
+                </div>
+                <br>
+                <div class="input-group-icon mt-10">
+                    <button class="button rounded-0 btn btn-outline-primary" type="submit">Add</button> &nbsp;&nbsp;
+                </div>
+            </form>
+        </div>
+    </article>
     <!--================Blog Area =================-->
 {% endblock %}

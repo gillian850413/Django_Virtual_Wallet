@@ -1,0 +1,89 @@
+{% extends 'app/transaction_page.html' %}
+{% load static from staticfiles %}
+
+{% block request %}
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row" >
+                <div class="col-lg-8 mb-5 mb-lg-0" >
+                    <article class="blog_item" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3><div class="icon"><i class="flaticon-money-2"></i></div></h3>
+
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <h2>Request Money</h2><hr>
+
+                            <form class="form-contact contact_form" action="{% url 'request' %}" method="get" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                        <input class="form-control" name="search_user" id="search_user" type="text" maxlength="45"
+                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" placeholder="Username" required/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-12">
+                                        {% for search_user in search_user %}
+                                            {% if search_user == request.user %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    Cannot input your username.
+                                                </div>
+                                            {% else %}
+                                                <meta http-equiv="refresh" content="0; url={% url 'request_detail' search_user.id%}" />
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                    <button type="submit" class="button button-contactForm boxed-btn">Search </button>
+                                </div>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Links</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="{% url 'activity' %}">
+                                        <p>Activity</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'profile' %}" >
+                                        <p>User Profile</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'send' %}" >
+                                        <p>Send & Request</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'friends' %}" >
+                                        <p>Manage Friends</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

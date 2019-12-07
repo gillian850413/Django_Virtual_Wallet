@@ -1,67 +1,34 @@
-{% extends 'app/settings_page.html' %}
+{% extends 'app/wallet_page.html' %}
 {% load static from staticfiles %}
 
-{% block bank_card %}
+{% block wallet_info %}
 
 <!--================Blog Area =================-->
-    <section class="blog_area section-padding">
-        <div class="container">
-            <div class="row" >
-                <div class="col-lg-8 mb-5 mb-lg-0" >
-                    <article class="blog_item" >
-                        <div class="blog_item_img">
-                            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
-                            <a href="#" class="blog_item_date">
-                                <h3><div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div></h3>
+<article class="blog_item" >
+    <div class="blog_item_img">
+        <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+        <a href="#" class="blog_item_date">
+            <h3><div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div></h3>
 
-                            </a>
-                        </div>
-                        <div class="blog_details">
-                            <h2>Card Information</h2><hr>
-                            <form action="#">
-                                <ul class="list cat-list">
-                                    <li><b style="color: black">Card Type:</b>&emsp;{{ card.card_type}} card</li><hr>
-                                    <li><b style="color: black">Card Number:</b>&emsp;{{ card.card_number}}</li><hr>
-                                    <li><b style="color: black">Card Holder First Name:</b>&emsp;{{ card.owner_first_name}}</li><hr>
-                                    <li><b style="color: black">Card Holder Last Name:</b>&emsp;{{ card.owner_last_name}}</li><hr>
-                                    <li><b style="color: black">Expiration Date:</b>&emsp;{{ card.expiration_date|date:'Y/m/d'}}</li><hr>
-                                    <li><b style="color: black">Security Code:</b>&emsp;***</li><hr>
-                                </ul>
-                                <a href="{% url 'card_update' card.pk %}"
-                                   class="btn rounded-0 btn-outline-primary">Edit Card</a> &nbsp;&nbsp;
-                                <a href="{% url 'card_delete' card.pk %}"
-                                   class="btn rounded-0 btn-outline-danger">Delete Card</a>
-                            </form>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">User Account</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="{% url 'wallet' %}">
-                                        <p>View Balance</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'send' %}">
-                                        <p>View Activity</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'reset_password' %}" >
-                                        <p>Change Password</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </a>
+    </div>
+    <div class="blog_details">
+        <h2>Card Information</h2><hr>
+        <form action="{% url 'card_detail' card.pk %}">
+            <ul class="list cat-list">
+                <li><b style="color: black">Card Type:</b>&emsp;{{ card.card_type}} card</li><hr>
+                <li><b style="color: black">Card Number:</b>&emsp;{{ card.card_number}}</li><hr>
+                <li><b style="color: black">Card Holder First Name:</b>&emsp;{{ card.owner_first_name}}</li><hr>
+                <li><b style="color: black">Card Holder Last Name:</b>&emsp;{{ card.owner_last_name}}</li><hr>
+                <li><b style="color: black">Expiration Date:</b>&emsp;{{ card.expiration_date|date:'Y/m/d'}}</li><hr>
+                <li><b style="color: black">Security Code:</b>&emsp;***</li><hr>
+            </ul>
+            <a href="{% url 'card_update' card.pk %}"
+               class="btn rounded-0 btn-outline-primary">Edit Card</a> &nbsp;&nbsp;
+            <a href="{% url 'card_delete' card.pk %}"
+               class="btn rounded-0 btn-outline-danger">Delete Card</a>
+        </form>
+    </div>
+</article>
     <!--================Blog Area =================-->
 {% endblock %}
