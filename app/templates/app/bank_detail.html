@@ -21,7 +21,7 @@
                     <li><b style="color: black">Routing Number:</b>&emsp;{{ bank.routing_number}}</li><hr>
                     <li><b style="color: black">Account Number:</b>&emsp;{{ bank.account_number}}</li><hr>
                 </ul>
-                <a href="{% url 'bank_delete' bank.pk %}"
+                <a href="{% url 'bank_delete' bank.pk%}"
                    class="btn rounded-0 btn-outline-danger">Delete Bank</a>
             </form>
         </div>

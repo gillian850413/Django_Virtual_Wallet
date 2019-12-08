@@ -30,17 +30,13 @@
                     </ul>
                 </div>
             {% endif %}
+            <ul class="list cat-list">
+                <li><b style="color: black">Card Type:</b>&emsp;{{ card.card_type}} card</li><hr>
+                <li><b style="color: black">Card Number:</b>&emsp;{{ card.card_number}}</li>
+            </ul>
 
-            <div class="input-group-icon mt-10">
-                <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
-                <input type="text" class="single-input" value="{{ card.card_type }} card"
-                       placeholder="Card Type" readonly>
-            </div>
-            <div class="input-group-icon mt-10">
-                <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
-                <input type="text" class="single-input" value="{{ card.card_number }}"
-                       placeholder="Card Number" readonly>
-            </div>
+            <hr><br>
+            <b>Update Information</b>
             <div class="input-group-icon mt-10">
                 <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
                 <input type="text" class="single-input" name="{{ form.owner_first_name.html_name }}"

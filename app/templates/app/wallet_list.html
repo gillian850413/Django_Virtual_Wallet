@@ -42,7 +42,6 @@
                     </ul>
                     {% empty %}
                     <li><em>There are currently no bank accounts available.</em></li>
-
                 {% endfor %}
             </div>
             <br>
@@ -67,7 +66,7 @@
                 {% for card in card_list %}
                     <ul class="list cat-list">
                         <li><a href="{{ card.get_absolute_url }}">
-                            <b style="color: black">{{ card.card_type }} card:</b>&emsp;{{ card }}</a></li><hr>
+                            <b style="color: black">Card:</b>&emsp;{{ card }}</a></li><hr>
                     </ul>
                     {% empty %}
                     <li><em>There are currently no cards available.</em></li>

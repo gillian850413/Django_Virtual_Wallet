@@ -1,7 +1,7 @@
 {% extends 'app/transaction_page.html' %}
 {% load static from staticfiles %}
 
-{% block send %}
+{% block request %}
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row" >
@@ -10,21 +10,18 @@
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
                             <a href="#" class="blog_item_date">
-                                <h3><div class="icon"><i class="flaticon-money"></i></div></h3>
+                                <h3><div class="icon"><i class="flaticon-money-2"></i></div></h3>
 
                             </a>
                         </div>
                         <div class="blog_details">
-                            <h2>Send To: {{ user.username }}</h2><hr>
+                            <h2>Request Money</h2><hr>
 
                             <form class="form-contact contact_form" action="{% url 'send_detail' user.id%}" method="post" novalidate="novalidate">
                                 <div class="row">
-
-
                                     <div class="col-12">
                                         <div class="form-group">
-                                        <input class="form-control" name="search_user" id="search_user" type="text" maxlength="45"
-                                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" placeholder="Username" required/>
+                                            Username: {{ user.username }}
                                         </div>
                                     </div>
 
@@ -43,22 +40,17 @@
                             <ul class="list cat-list">
                                 <li>
                                     <a href="{% url 'activity' %}">
-                                        <p>Activity</p>
+                                        <p>View Activity</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'wallet' %}" >
+                                        <p>View Wallet</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'profile' %}" >
-                                        <p>User Profile</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'send' %}" >
-                                        <p>Send & Request</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'friends' %}" >
-                                        <p>Manage Friends</p>
+                                        <p>View Profile</p>
                                     </a>
                                 </li>
                             </ul>

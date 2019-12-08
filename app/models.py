@@ -13,24 +13,21 @@ class Profile(models.Model):
         return self.user.username
 
 
-Method_Type = (
-    ('account', 'Easy Pay Account'),
-    ('card', 'Cards'),
-    ('bank', 'Bank'),
-)
-
-
 class PaymentMethod(models.Model):
     method_id = models.AutoField(primary_key=True)
-    method_type = models.CharField(max_length=255, default=None, choices=Method_Type)
+    method_type = models.CharField(max_length=255, default='')
     user = models.ForeignKey(User, related_name='payment_user', on_delete=models.PROTECT)
 
+    def __str__(self):
+        return self.method_type
 
-class Account(PaymentMethod):
+
+class Account(models.Model):
+    payment = models.OneToOneField(PaymentMethod, on_delete=models.CASCADE)
     balance = models.FloatField(default=0.00)
 
     def __str__(self):
-        return self.user.username
+        return 'Account: %s' % self.payment.user.username
 
     def get_absolute_url(self):
         return reverse('wallet', kwargs={'pk': self.pk})
@@ -41,14 +38,15 @@ class Account(PaymentMethod):
         super(Account, self).save(*args, **kwargs)
 
 
-class Bank(PaymentMethod):
+class Bank(models.Model):
+    payment = models.OneToOneField(PaymentMethod, on_delete=models.CASCADE)
     owner_first_name = models.CharField(max_length=255, default=None)
     owner_last_name = models.CharField(max_length=255, default=None)
     routing_number = models.CharField(max_length=9, default=None)
     account_number = models.CharField(max_length=10, default=None)
 
     def __str__(self):
-        return '****%s' % self.account_number[:-4]
+        return 'Bank: ****%s' % self.account_number[5:]
 
     def get_absolute_url(self):
         return reverse('bank_detail', kwargs={'pk': self.pk})
@@ -61,12 +59,13 @@ class Bank(PaymentMethod):
 
 
 Card_Type = (
-    ('credit', 'Credit Card'),
-    ('debit', 'Debit Card'),
+    ('Credit', 'Credit Card'),
+    ('Debit', 'Debit Card'),
 )
 
 
-class Card(PaymentMethod):
+class Card(models.Model):
+    payment = models.OneToOneField(PaymentMethod, on_delete=models.CASCADE)
     card_type = models.CharField(max_length=45, choices=Card_Type)
     card_number = models.CharField(max_length=16, default=None)
     owner_first_name = models.CharField(max_length=45)
@@ -84,7 +83,7 @@ class Card(PaymentMethod):
         return reverse('card_delete', kwargs={'pk': self.pk})
 
     def __str__(self):
-        return '************%s' % (self.card_number[:-12])
+        return '%s Card: ************%s' % (self.card_type, self.card_number[12:])
 
     class Meta:
         unique_together = ('card_type', 'owner_first_name', 'owner_last_name', 'card_number', 'security_code', 'expiration_date')
@@ -92,7 +91,7 @@ class Card(PaymentMethod):
 
 
 Transaction_Type = (
-    ('pay', 'Pay'),
+    ('send', 'Send'),
     ('request', 'Request'),
     ('transfer', 'Transfer'),
 )
@@ -118,11 +117,11 @@ class Transaction(models.Model):
     transaction_type = models.CharField(max_length=45, choices=Transaction_Type, default='')
     category = models.CharField(max_length=45, choices=Categories)
     amount = models.FloatField(default=0.00)
-    description = models.CharField(max_length=200)
-    recipients = models.CharField(max_length=45)  # another user, friend, bank
+    description = models.CharField(max_length=200, default=False)
     create_date = models.DateTimeField(default=now, editable=False)
     is_complete = models.BooleanField(default=False)
-    user = models.ForeignKey(User, related_name='tran_user', on_delete=models.PROTECT)
+    receiver = models.ForeignKey(User, related_name='receiver', on_delete=models.PROTECT, default='')
+    creator = models.ForeignKey(User, related_name='creator', on_delete=models.PROTECT, default='')
     payment_method = models.ForeignKey(PaymentMethod, related_name='payment_method', on_delete=models.PROTECT, default='')
 
     def save(self, *args, **kwargs):

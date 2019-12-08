@@ -33,11 +33,7 @@
             <div class="input-group-icon mt-10">
                 <div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div>
                 <div class="form-select" id="default-select">
-                    <select name="card_type" required>
-                        <option value="" selected disabled hidden></option>
-                        <option value="credit">Credit Card</option>
-                        <option value="debit">Debit Card</option>
-                    </select>
+                    {{ form.card_type }}
                 </div>
             </div>
             <div class="input-group-icon mt-10">

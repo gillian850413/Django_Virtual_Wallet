@@ -17,7 +17,7 @@ from app.form import (
     BankCreateForm,
     CardCreateForm,
     CardUpdateForm,
-    UserValidationForm)
+    SearchUserForm, SendMoneyForm)
 
 from .models import (
     Profile,
@@ -25,6 +25,7 @@ from .models import (
     Bank,
     Card,
     Transaction,
+    PaymentMethod,
     Friendship,
 )
 
@@ -69,10 +70,9 @@ class UserRegistration(CreateView):
 
         # Create User Profile model
         Profile.objects.create(user=user, birthday=form.clean_birthday(), address=form.clean_address())
-        # Create a user account
-        Account.objects.create(user=user, method_type='account')
+        payment = PaymentMethod.objects.create(user=user, method_type='account')
+        Account.objects.create(payment=payment)
 
-        # return super(UserRegistration, self).form_valid(form)
         return HttpResponseRedirect(reverse_lazy('user_login'))
 
 
@@ -141,9 +141,10 @@ class WalletList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         user = self.request.user
 
-        context['bank_list'] = Bank.objects.filter(user=user)
-        context['card_list'] = Card.objects.filter(user=user)
-        context['account'] = Account.objects.filter(user=user)
+        context['bank_list'] = Bank.objects.filter(payment__user=user)
+        context['card_list'] = Card.objects.filter(payment__user=user)
+        context['account'] = Account.objects.filter(payment__user=user)
+
         return context
 
 
@@ -165,7 +166,15 @@ class BankCreate(LoginRequiredMixin, CreateView):
         bank.owner_last_name = form.cleaned_data['owner_first_name']
         bank.routing_number = form.cleaned_data['routing_number']
         bank.account_number = form.cleaned_data['account_number']
-        bank.save()
+
+
+        payment = PaymentMethod.objects.create(user=bank.user, method_type=bank.method_type)
+        Bank.objects.create(payment=payment,
+                            owner_last_name=bank.owner_last_name,
+                            owner_first_name=bank.owner_first_name,
+                            routing_number=bank.routing_number,
+                            account_number=bank.account_number)
+
         return HttpResponseRedirect(reverse_lazy('wallet'))
 
 
@@ -173,24 +182,35 @@ class BankDetail(LoginRequiredMixin, View):
     def get(self, request, pk):
         bank = get_object_or_404(
             Bank,
-            pk=pk
+            pk=pk,
         )
 
         return render(
             request,
             'app/bank_detail.html',
-            {'bank': bank, 'user': bank.user}
+            {'bank': bank, 'user': bank.payment.user}
         )
 
 
 class BankDelete(LoginRequiredMixin, DeleteView):
     model = Bank
     template_name = 'app/bank_confirm_delete.html'
-    success_url = reverse_lazy('wallet')
+    # success_url = reverse_lazy('wallet')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+    def delete(self, request, *args, **kwargs):
+        user = request.user
+
+        bank = Bank.objects.get(id=kwargs.get('pk'))
+        payment = PaymentMethod.objects.filter(user=user, method_id=bank.payment.method_id)
+        bank.delete()
+        payment.delete()
+
+        return HttpResponseRedirect(reverse_lazy('wallet'))
+
 
 
 class CardCreate(LoginRequiredMixin, CreateView):
@@ -206,7 +226,6 @@ class CardCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         card = form.save(commit=False)
         card.user = self.request.user
-
         card.method_type = 'card'
         card.owner_first_name = form.cleaned_data['owner_first_name']
         card.owner_last_name = form.cleaned_data['owner_first_name']
@@ -215,7 +234,14 @@ class CardCreate(LoginRequiredMixin, CreateView):
         card.security_code = form.cleaned_data['security_code']
         card.expiration_date = form.cleaned_data['expiration_date']
 
-        card.save()
+        payment = PaymentMethod.objects.create(user=card.user, method_type=card.method_type)
+        Card.objects.create(payment=payment,
+                            owner_last_name=card.owner_last_name,
+                            owner_first_name=card.owner_first_name,
+                            card_number=card.card_number,
+                            card_type=card.card_type,
+                            security_code=card.security_code,
+                            expiration_date=card.expiration_date)
 
         return HttpResponseRedirect(reverse_lazy('wallet'))
 
@@ -230,7 +256,7 @@ class CardDetail(LoginRequiredMixin, View):
         return render(
             request,
             'app/card_detail.html',
-            {'card': card, 'user': card.user}
+            {'card': card, 'user': card.payment.user}
         )
 
 
@@ -251,11 +277,18 @@ class CardUpdate(LoginRequiredMixin, UpdateView):
 class CardDelete(LoginRequiredMixin, DeleteView):
     model = Card
     template_name = 'app/card_confirm_delete.html'
-    success_url = reverse_lazy('wallet')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
+
+    def delete(self, request, *args, **kwargs):
+        user = request.user
+        card = Card.objects.get(id=kwargs.get('pk'))
+        payment = PaymentMethod.objects.filter(user=user, method_id=card.payment.method_id)
+        card.delete()
+        payment.delete()
+        return HttpResponseRedirect(reverse_lazy('wallet'))
 
 
 class ActivityList(LoginRequiredMixin, ListView, PageLinksMixin):
@@ -273,7 +306,7 @@ class ActivityList(LoginRequiredMixin, ListView, PageLinksMixin):
 
 class SendSearchUser(LoginRequiredMixin, ListView):
     model = User
-    form_class = UserValidationForm
+    form_class = SearchUserForm
     template_name = 'app/send_search_user_form.html'
 
     def get_queryset(self):
@@ -281,7 +314,8 @@ class SendSearchUser(LoginRequiredMixin, ListView):
             username = self.kwargs['search_user']
         except:
             username = ''
-        if (username != ''):
+
+        if username != '':
             object_list = self.model.objects.filter(username=username)
         else:
             object_list = self.model.objects.all()
@@ -306,21 +340,43 @@ class SendSearchUser(LoginRequiredMixin, ListView):
         return context
 
 
-class SendDetail(LoginRequiredMixin, View):
-    def get(self, request, pk):
-        user = get_object_or_404(
-            User,
-            pk=pk
-        )
+class SendMoney(LoginRequiredMixin, CreateView):
+    form_class = SendMoneyForm
+    model = Transaction
+    template_name = 'app/send_money_form.html'
 
-        return render(request,
-                      'app/send_detail_form.html',
-                      {'user': user, 'nbar': 'send'})
+    def get_context_data(self, **kwargs):
+        context = super(SendMoney, self).get_context_data(**kwargs)
+
+        creator = self.request.user
+        context['receiver'] = User.objects.get(id=self.kwargs.get('pk'))
+        context['sender_payment_list'] = PaymentMethod.objects.filter(user=creator)
+        context['nbar'] = 'send'
+        return context
+
+    def form_valid(self, form):
+        transaction = form.save(commit=False)
+        transaction.creator = self.request.user
+        transaction.receiver = User.objects.get(id=self.kwargs.get('pk'))
+        transaction.transaction_type = 'send'
+        transaction.is_complete = True
+        transaction.category = form.clean_data['category']
+        transaction.amount = form.cleaned_data['amount']
+        transaction.description = form.clean_data['description']
+        transaction.payment_method = form.clean_data['payment_method']
+        transaction.save()
+
+        return HttpResponseRedirect(reverse_lazy('send_success'))
+
+
+class SendSuccess(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'app/send_success_page.html', {'nbar': 'send'})
 
 
 class RequestSearchUser(LoginRequiredMixin, ListView):
     model = User
-    form_class = UserValidationForm
+    form_class = SearchUserForm
     template_name = 'app/request_search_user_form.html'
 
     def get_queryset(self):
@@ -328,7 +384,7 @@ class RequestSearchUser(LoginRequiredMixin, ListView):
             username = self.kwargs['search_user']
         except:
             username = ''
-        if (username != ''):
+        if username != '':
             object_list = self.model.objects.filter(username=username)
         else:
             object_list = self.model.objects.all()
@@ -353,22 +409,18 @@ class RequestSearchUser(LoginRequiredMixin, ListView):
         return context
 
 
-class RequestDetail(LoginRequiredMixin, View):
+class RequestMoney(LoginRequiredMixin, View):
     def get(self, request, pk):
-        user = get_object_or_404(
+        receiver = get_object_or_404(
             User,
             pk=pk
         )
 
         return render(request,
-                      'app/request_detail_form.html',
-                      {'user': user, 'nbar': 'request'})
-
+                      'app/request_money_form.html',
+                      {'receiver': receiver, 'nbar': 'request'})
 
 
 class Friends(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'app/friends_list.html', {'nbar': 'friends'})
-
-
-

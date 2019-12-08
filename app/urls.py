@@ -1,10 +1,11 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from app.views import (
     Index, UserProfile, UserProfileUpdate, ActivityList,
-    SendSearchUser, SendDetail, RequestSearchUser, RequestDetail, Friends, WalletList,
+    SendSearchUser, SendMoney, SendSuccess,
+    RequestSearchUser, RequestMoney, Friends, WalletList,
     BankCreate, BankDetail, BankDelete,
-    CardCreate, CardDetail, CardUpdate, CardDelete)
+    CardCreate, CardDetail, CardUpdate, CardDelete
+)
 
 urlpatterns = [
     path('index/', Index.as_view(), name='index'),
@@ -23,10 +24,11 @@ urlpatterns = [
 
     path('activity/', ActivityList.as_view(), name='activity'),
     path('send/', SendSearchUser.as_view(), name='send'),
-    path('send/<int:pk>/', SendDetail.as_view(), name='send_detail'),
+    path('send/<int:pk>/', SendMoney.as_view(), name='send_money'),
+    path('send/success/', SendSuccess.as_view(), name='send_success'),
 
     path('request/', RequestSearchUser.as_view(), name='request'),
-    path('request/<int:pk>/', RequestDetail.as_view(), name='request_detail'),
+    path('request/<int:pk>/', RequestMoney.as_view(), name='request_money'),
 
     path('friends/', Friends.as_view(), name='friends'),
 

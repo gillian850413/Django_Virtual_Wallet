@@ -8,9 +8,7 @@ from .models import (
     Profile,
     Bank,
     Card,
-    Account,
     Transaction,
-    Friendship,
 )
 
 
@@ -71,15 +69,10 @@ class UserRegistrationForm(forms.ModelForm):
 
 class UserResetPwdForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput())
+
     class Meta:
         model = User
         fields = ('password', )
-
-    # def clean_username(self):
-    #     username = self.cleaned_data['username'].strip()
-    #     if not User.objects.filter(username=username).exists():
-    #         self.add_error('username', 'Username does not exist.')
-    #     return username
 
     def clean(self):
         cleaned_data = super(UserResetPwdForm, self).clean()
@@ -97,13 +90,22 @@ class UserForm(forms.ModelForm):
         fields = ('first_name', 'last_name', 'email')
 
     def clean_first_name(self):
-        return self.cleaned_data['first_name'].strip()
+        if self.cleaned_data['first_name'] == '':
+            self.add_error('first_name', 'The field "First Name" is required.')
+        else:
+            return self.cleaned_data['first_name'].strip()
 
     def clean_last_name(self):
-        return self.cleaned_data['last_name'].strip()
+        if self.cleaned_data['last_name'] == '':
+            self.add_error('last_name', 'The field "Last Name" is required.')
+        else:
+            return self.cleaned_data['last_name'].strip()
 
     def clean_email(self):
-        return self.cleaned_data['email'].strip()
+        if self.cleaned_data['email'] == '':
+            self.add_error('email', 'The field "Email" is required.')
+        else:
+            return self.cleaned_data['email'].strip()
 
 
 class UserProfileForm(forms.ModelForm):
@@ -126,60 +128,78 @@ class BankCreateForm(forms.ModelForm):
 
     class Meta:
         model = Bank
-        exclude = ['user', 'method_type']
+        exclude = ['user', 'method_type', 'payment']
         fields = '__all__'
 
     def clean_routing_number(self):
-        if  len(self.cleaned_data['routing_number']) != 9:
+        if len(self.cleaned_data['routing_number']) != 9:
             self.add_error('routing_number', 'Routing number must be 9 digits')
+        elif self.cleaned_data['routing_number'] == '':
+            self.add_error('routing_number', 'The field "Routing number" is required.')
         else:
             return self.cleaned_data['routing_number'].strip()
 
     def clean_account_number(self):
         if len(self.cleaned_data['account_number']) != 10:
             self.add_error('account_number', 'Account number must be 10 digits')
+        elif self.cleaned_data['account_number'] == '':
+            self.add_error('account_number', 'The field "Account number" is required.')
         else:
             return self.cleaned_data['account_number'].strip()
 
     def clean_owner_first_name(self):
-        return self.cleaned_data['owner_first_name'].strip()
+        if self.cleaned_data['owner_first_name'] == '':
+            self.add_error('owner_first_name', 'The field "Account Holder First Name" is required.')
+        else:
+            return self.cleaned_data['owner_first_name'].strip()
 
     def clean_owner_last_name(self):
-        return self.cleaned_data['owner_last_name'].strip()
+        if self.cleaned_data['owner_last_name'] == '':
+            self.add_error('owner_last_name', 'The field "Account Holder Last Name" is required.')
+        else:
+            return self.cleaned_data['owner_last_name'].strip()
 
 
 class CardCreateForm(forms.ModelForm):
     validator = RegexValidator(r"[0-9]", "Please input a valid card information.")
-
     card_number = forms.CharField(widget=TextInput(attrs={'type': 'number'}), validators=[validator])
     security_code = forms.CharField(widget=TextInput(attrs={'type': 'number'}), validators=[validator])
 
     FILTER_CHOICES = (
-        ('credit', 'Credit Card'),
-        ('debit', 'Debit Card'),
+        ('Credit', 'Credit Card'),
+        ('Debit', 'Debit Card'),
     )
 
-    card_type = forms.ChoiceField(choices = FILTER_CHOICES)
+    card_type = forms.ChoiceField(choices=FILTER_CHOICES)
 
     class Meta:
         model = Card
-        exclude = ['user', 'method_type']
+        exclude = ['user', 'method_type', 'payment']
         fields = '__all__'
 
     def clean_card_type(self):
-        return self.cleaned_data.get('card_type')
+        if self.cleaned_data['card_type'] == '':
+            self.add_error('card_type', 'The field "Card Type" is required.')
+        else:
+            return self.cleaned_data.get('card_type')
 
     def clean_card_number(self):
-        if  len(self.cleaned_data['card_number']) != 16:
+        if len(self.cleaned_data['card_number']) != 16:
             self.add_error('card_number', 'Card number must be 16 digits')
         else:
             return self.cleaned_data['card_number'].strip()
 
     def clean_owner_first_name(self):
-        return self.cleaned_data['owner_first_name'].strip()
+        if self.cleaned_data['owner_first_name'] == '':
+            self.add_error('owner_first_name', 'The field "Card Holder First Name" is required.')
+        else:
+            return self.cleaned_data['owner_first_name'].strip()
 
     def clean_owner_last_name(self):
-        return self.cleaned_data['owner_last_name'].strip()
+        if self.cleaned_data['owner_last_name'] == '':
+            self.add_error('owner_last_name', 'The field "Card Holder Last Name" is required.')
+        else:
+            return self.cleaned_data['owner_last_name'].strip()
 
     def clean_security_code(self):
         if len(self.cleaned_data['security_code']) != 3:
@@ -201,10 +221,16 @@ class CardUpdateForm(forms.ModelForm):
         fields = ('owner_first_name', 'owner_last_name', 'expiration_date')
 
     def clean_owner_first_name(self):
-        return self.cleaned_data['owner_first_name'].strip()
+        if self.cleaned_data['owner_first_name'] == '':
+            self.add_error('owner_first_name', 'The field "Card Holder First Name" is required.')
+        else:
+            return self.cleaned_data['owner_first_name'].strip()
 
     def clean_owner_last_name(self):
-        return self.cleaned_data['owner_last_name'].strip()
+        if self.cleaned_data['owner_last_name'] == '':
+            self.add_error('owner_last_name', 'The field "Card Holder Last Name" is required.')
+        else:
+            return self.cleaned_data['owner_last_name'].strip()
 
     def clean_expiration_date(self):
         if self.cleaned_data['expiration_date'] < date.today():
@@ -214,7 +240,7 @@ class CardUpdateForm(forms.ModelForm):
 
 
 # check if the target user exist or not
-class UserValidationForm(forms.ModelForm):
+class SearchUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username',)
@@ -223,8 +249,28 @@ class UserValidationForm(forms.ModelForm):
         username = self.cleaned_data['username'].strip()
         return username
 
+
 class SendMoneyForm(forms.ModelForm):
     class Meta:
         model = Transaction
-        fields = '__all__'
+        fields = ('category', 'amount', 'payment_method', 'description')
+    def clean_category(self):
+        if self.cleaned_data['category'] == '':
+            self.add_error('category', 'The field "Category" is required.')
+        else:
+            return self.cleaned_data['category'].strip()
 
+    def clean_amount(self):
+        if self.cleaned_data['amount'] == 0:
+            self.add_error('amount', 'The field "Amount" should not be 0.')
+        else:
+            return self.cleaned_data['amount']
+
+    def clean_payment_method(self):
+        if self.cleaned_data['payment_method'] == '':
+            self.add_error('payment_method', 'The field "Payment Method" is required.')
+        else:
+            return self.cleaned_data['payment_method'].strip()
+
+    def clean_description(self):
+        return self.cleaned_data['description']
