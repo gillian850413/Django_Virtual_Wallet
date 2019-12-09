@@ -19,7 +19,7 @@ class PaymentMethod(models.Model):
     user = models.ForeignKey(User, related_name='payment_user', on_delete=models.PROTECT)
 
     def __str__(self):
-        return self.method_type
+        return str(self.method_id)
 
 
 class Account(models.Model):
@@ -29,8 +29,8 @@ class Account(models.Model):
     def __str__(self):
         return 'Account: %s' % self.payment.user.username
 
-    def get_absolute_url(self):
-        return reverse('wallet', kwargs={'pk': self.pk})
+    def get_update_url(self):
+        return reverse('account_transfer', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         # ensure that the database only stores 2 decimal places
@@ -86,7 +86,8 @@ class Card(models.Model):
         return '%s Card: ************%s' % (self.card_type, self.card_number[12:])
 
     class Meta:
-        unique_together = ('card_type', 'owner_first_name', 'owner_last_name', 'card_number', 'security_code', 'expiration_date')
+        unique_together = ('card_type', 'owner_first_name', 'owner_last_name',
+                           'card_number', 'security_code', 'expiration_date')
         ordering = ['card_type', 'card_number']
 
 
@@ -122,7 +123,8 @@ class Transaction(models.Model):
     is_complete = models.BooleanField(default=False)
     receiver = models.ForeignKey(User, related_name='receiver', on_delete=models.PROTECT, default='')
     creator = models.ForeignKey(User, related_name='creator', on_delete=models.PROTECT, default='')
-    payment_method = models.ForeignKey(PaymentMethod, related_name='payment_method', on_delete=models.PROTECT, default='')
+    payment_method = models.ForeignKey(PaymentMethod, related_name='payment_method',
+                                       on_delete=models.PROTECT, default='', null=True)
 
     def save(self, *args, **kwargs):
         # ensure that the database only stores 2 decimal places
@@ -130,13 +132,7 @@ class Transaction(models.Model):
         super(Transaction, self).save(*args, **kwargs)
 
     def __str__(self):
-        return '%s %d (%s)' % (self.transaction_type, self.amount, self.category)
+        return str(self.transaction_id)
 
     class Meta:
         ordering = ['category']
-
-
-class Friendship(models.Model):
-    friendship_id = models.AutoField(primary_key=True)
-    creator = models.ForeignKey(User, related_name="friendship_creator", on_delete=models.PROTECT)
-    friend = models.ForeignKey(User, related_name="friend", on_delete=models.PROTECT)

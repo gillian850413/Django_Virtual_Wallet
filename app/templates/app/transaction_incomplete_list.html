@@ -1,0 +1,86 @@
+{% extends 'app/transaction_page.html' %}
+{% load static from staticfiles %}
+
+{% block incomplete %}
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row" >
+                <div class="col-lg-8 mb-5 mb-lg-0" >
+                    <article class="blog_item" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="../../static/img/banner/profile_banner.png" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3><div class="icon"><i class="flaticon-money" aria-hidden="true"></i></div></h3>
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <h2>Incomplete Payment</h2><hr>
+                            <div class="input-group-icon mt-10">
+                                {% for tran in tran_receiver_list %}
+                                    <ul class="list cat-list">
+                                        <li><b style="color: black"><font size="4">Send To: {{ tran.creator }}</font></b>&emsp;
+                                            <a href="{% url 'incomplete_payment' tran.pk %}">${{ tran.amount }} USD ({{ tran.description }})</a>
+                                        </li><hr>
+                                    </ul>
+                                    {% empty %}
+                                    <li><em>There are currently no incomplete payments.</em></li>
+                                {% endfor %}
+                            </div>
+                            <br>
+                        </div>
+                    </article>
+
+                    <article class="blog_item" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="../../static/img/banner/profile_banner.png" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3><div class="icon"><i class="flaticon-money-2" aria-hidden="true"></i></div></h3>
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <h2>Requests From You</h2><hr>
+                            <div class="input-group-icon mt-10">
+                                {% for tran in tran_creator_list %}
+                                    <ul class="list cat-list">
+                                        <li><b style="color: black"><font size="4">Request To: {{ tran.receiver }}</font></b>&emsp;
+                                            <a href="{% url 'incomplete_request' tran.pk %}">${{ tran.amount }} USD ({{ tran.description }})</a>
+
+                                        </li><hr>
+                                    </ul>
+                                    {% empty %}
+                                    <li><em>There are currently no requests incompleted.</em></li>
+                                {% endfor %}
+                            </div>
+                            <br>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Links</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="{% url 'activity' %}">
+                                        <p>View Activity</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'wallet' %}" >
+                                        <p>Payment Method</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'profile' %}" >
+                                        <p>User Profile</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

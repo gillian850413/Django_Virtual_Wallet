@@ -1,7 +1,7 @@
 {% extends 'app/transaction_page.html' %}
 {% load static from staticfiles %}
 
-{% block send %}
+{% block request %}
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row justify-content-md-center" >
@@ -10,14 +10,14 @@
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
                             <a href="#" class="blog_item_date">
-                                <h3><div class="icon"><i class="flaticon-money"></i></div></h3>
+                                <h3><div class="icon"><i class="flaticon-money-2"></i></div></h3>
 
                             </a>
                         </div>
                         <div class="blog_details">
-                            <h1>Success!</h1>
+                            <h1>Request Success!</h1>
 
-                            <h4><br>Check <a href="{% url 'activity' %}"><b>Activity >>></b></a></h4>
+                            <h4><br>Check <a href="{% url 'incomplete' %}"><b>Incomplete Transactions >>></b></a></h4>
                         </div>
                     </article>
                 </div>

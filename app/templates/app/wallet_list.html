@@ -12,15 +12,20 @@
         </div>
         <div class="blog_details">
             <h2>Balance</h2>
-            <div class="input-group-icon mt-10">
-                <font size="6">$ {{ account.model.balance }} USD</font>
-            </div>
-            <hr>
-            <div class="input-group-icon mt-10">
-                 <a href="{% url 'activity' %}"><b>View Detail >>></b></a>
-            </div>
-
-
+            {% for acc in account %}
+                <div class="input-group-icon mt-10">
+                        <font size="6">$ {{ acc.balance }} USD</font>
+                </div>
+                <hr>
+                <div class="input-group-icon mt-10">
+                     <a href="{% url 'activity' %}"><b>View Detail >>></b></a>
+                </div>
+                {% if acc.balance != 0 %}
+                    <div class="input-group-icon mt-10">
+                         <a href="{% url 'account_transfer' acc.pk%}"><b>Transfer >>></b></a>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
     </article>
 

@@ -36,7 +36,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <select class="form-control form-select " id="default-select" name="category">
-                                                <option value = "" selected disabled hidden>Categories</option>
+                                                <option value="" selected disabled hidden>Categories</option>
                                                 <option value="utilities">Bills & Utilities</option>
                                                 <option value="transportation">Auto & Transport</option>
                                                 <option value="groceries">Groceries</option>
@@ -65,13 +65,11 @@
                                                 <option value="" selected disabled hidden>Payment Method</option>
                                                 {% for payment in sender_payment_list%}
                                                     {% if payment.method_type == 'account'%}
-                                                        {% if payment.account.balance != 0 %}
-                                                            <option value="account">{{ payment.account }}</option>
-                                                        {% endif %}
+                                                        <option value={{ payment.method_id }}>{{ payment.account }}</option>
                                                     {% elif payment.method_type == 'bank' %}
-                                                        <option value="bank">{{ payment.bank }}</option>
+                                                        <option value={{ payment.method_id }}>{{ payment.bank }}</option>
                                                     {% elif payment.method_type == 'card' %}
-                                                        <option value="card">{{ payment.card }}</option>
+                                                        <option value={{ payment.method_id }}>{{ payment.card }}</option>
                                                     {% endif %}
                                                 {% endfor %}
                                             </select>

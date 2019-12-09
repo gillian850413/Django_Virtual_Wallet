@@ -34,8 +34,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link {% if nbar == 'friends' %}active{% endif %}"
-                                   id="friend-tab" href="{% url 'friends' %}" role="tab" >View Friends</a>
+                                <a class="nav-link {% if nbar == 'incomplete' %}active{% endif %}"
+                                   id="incomplete-tab" href="{% url 'incomplete' %}" role="tab" >Incomplete Transaction</a>
                             </li>
                         </ul>
                     </div>
@@ -46,8 +46,8 @@
             {% block send %} default {% endblock %}
         {% elif nbar == 'request' %}
             {% block request %} default {% endblock %}
-        {% elif nbar == 'friends' %}
-            {% block friends %} default {% endblock %}
+        {% elif nbar == 'incomplete' %}
+            {% block incomplete %} default {% endblock %}
         {% endif %}
 
 

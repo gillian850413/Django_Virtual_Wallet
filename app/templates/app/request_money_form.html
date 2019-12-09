@@ -4,7 +4,7 @@
 {% block request %}
     <section class="blog_area section-padding">
         <div class="container">
-            <div class="row" >
+            <div class="row justify-content-md-center" >
                 <div class="col-lg-8 mb-5 mb-lg-0" >
                     <article class="blog_item" >
                         <div class="blog_item_img">
@@ -15,48 +15,66 @@
                             </a>
                         </div>
                         <div class="blog_details">
-                            <h2>Request Money</h2><hr>
-
-                            <form class="form-contact contact_form" action="{% url 'send_detail' user.id%}" method="post" novalidate="novalidate">
+                            <h2>Request To: {{ receiver }}</h2><hr>
+                            <form class="form-contact contact_form" action="{% url 'request_money' receiver.id%}" method="post" novalidate="novalidate">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        <ul>
+                                            {% for field in form %}
+                                                {% for error in field.errors %}
+                                                    <li>{{ error|escape }}</li>
+                                                {% endfor %}
+                                            {% endfor %}
+                                            {% for error in form.non_field_errors %}
+                                                <li>{{ error|escape }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            Username: {{ user.username }}
+                                            <select class="form-control form-select " id="default-select" name="category">
+                                                <option value="" selected disabled hidden>Categories</option>
+                                                <option value="utilities">Bills & Utilities</option>
+                                                <option value="transportation">Auto & Transport</option>
+                                                <option value="groceries">Groceries</option>
+                                                <option value="shopping">Shopping</option>
+                                                <option value="health">Health Care</option>
+                                                <option value="education">Education</option>
+                                                <option value="travel">Travel</option>
+                                                <option value="housing">Housing</option>
+                                                <option value="entertainment">Entertainment</option>
+                                                <option value="others">Others</option>
+                                            </select>
                                         </div>
                                     </div>
 
+                                    <div class="col-12"><div class="form-group"></div></div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                        <input class="form-control" name="{{ form.amount.html_name }}"
+                                               id="{{ form.amount.id_for_label }}" type="text" maxlength="45" placeholder="Amount" required/>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                        <textarea class="form-control w-100" name="{{ form.description.html_name }}" id="{{ form.description.id_for_label }}"
+                                                  cols="30" rows="9" placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                                    <button type="submit" class="button button-contactForm boxed-btn">Request</button>
                                 </div>
                             </form>
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Links</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="{% url 'activity' %}">
-                                        <p>View Activity</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'wallet' %}" >
-                                        <p>View Wallet</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'profile' %}" >
-                                        <p>View Profile</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-                    </div>
-                </div>
+
             </div>
         </div>
     </section>

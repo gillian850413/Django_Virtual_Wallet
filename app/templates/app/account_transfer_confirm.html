@@ -1,0 +1,33 @@
+{% extends 'app/wallet_page.html' %}
+{% load static from staticfiles %}
+
+{% block wallet_info %}
+
+<!--================Blog Area =================-->
+    <article class="blog_item" >
+        <div class="blog_item_img">
+            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner2.png' %}" alt="">
+            <a href="#" class="blog_item_date">
+                <h3><div class="icon"><i class="flaticon-bank" aria-hidden="true"></i></div></h3>
+
+            </a>
+        </div>
+        <div class="blog_details">
+            <h2>Transfer</h2><hr>
+            <form action="{% url 'account_transfer' account.pk%}" method="post">
+                {% csrf_token %}
+                <ul class="list cat-list">
+                    <li>Are you sure you want to transfer balance to bank?</li>
+                </ul><br>
+                <button class='button rounded-0 btn btn-outline-primary'
+                        type="submit">Confirm</button>&nbsp;&nbsp;
+                <button class="btn rounded-0 btn-outline-danger">
+                    <a href="{% url 'wallet' %}">Cancel</a>
+                </button>
+
+            </form>
+
+        </div>
+    </article>
+    <!--================Blog Area =================-->
+{% endblock %}
