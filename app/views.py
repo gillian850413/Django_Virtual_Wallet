@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
@@ -35,7 +35,6 @@ from .models import (
 from .utils import (
     PageLinksMixin,
 )
-
 
 class Index(View):
     def get(self, request):
@@ -78,11 +77,12 @@ class UserRegistration(CreateView):
         return HttpResponseRedirect(reverse_lazy('user_login'))
 
 
-class UserResetPwd(UpdateView):
+class UserResetPwd(UpdateView, PermissionRequiredMixin):
     form_class = UserResetPwdForm
     model = User
     template_name = 'app/user_reset_pwd_form.html'
     success_url = 'user_login'
+    permission_required = 'app.change_user'
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -98,15 +98,17 @@ class UserResetPwd(UpdateView):
         return HttpResponseRedirect(reverse_lazy('user_login'))
 
 
-class UserProfile(LoginRequiredMixin, ListView):
+class UserProfile(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     model = User
     template_name = 'app/user_profile_form.html'
+    permission_required = 'app.view_profile'
 
 
-class UserProfileUpdate(LoginRequiredMixin, UpdateView):
+class UserProfileUpdate(LoginRequiredMixin, UpdateView, PermissionRequiredMixin):
     model = User
     form_class = UserForm
     template_name = 'app/user_profile_update.html'
+    permission_required = 'app.change_profile'
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -132,9 +134,10 @@ class UserProfileUpdate(LoginRequiredMixin, UpdateView):
         return HttpResponseRedirect(reverse_lazy('profile'))
 
 
-class AccountList(LoginRequiredMixin, ListView):
+class AccountList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     model = User
     template_name = 'app/account_list.html'
+    permission_required = 'app.view_account'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -144,7 +147,9 @@ class AccountList(LoginRequiredMixin, ListView):
         return context
 
 
-class AccountTransfer(LoginRequiredMixin, View):
+class AccountTransfer(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.change_account'
+
     def get(self, request, pk):
         account = get_object_or_404(
             Account,
@@ -157,9 +162,10 @@ class AccountTransfer(LoginRequiredMixin, View):
         return HttpResponseRedirect(reverse_lazy('account'))
 
 
-class BankList(LoginRequiredMixin, ListView):
+class BankList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     model = User
     template_name = 'app/bank_list.html'
+    permission_required = 'app.view_bank'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -169,10 +175,11 @@ class BankList(LoginRequiredMixin, ListView):
         return context
 
 
-class BankCreate(LoginRequiredMixin, CreateView):
+class BankCreate(LoginRequiredMixin, CreateView, PermissionRequiredMixin):
     form_class = BankCreateForm
     model = Bank
     template_name = 'app/bank_create.html'
+    permission_required = 'app.add_bank'
 
     def get_context_data(self, **kwargs):
         context = super(BankCreate, self).get_context_data(**kwargs)
@@ -199,7 +206,9 @@ class BankCreate(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(reverse_lazy('bank'))
 
 
-class BankDetail(LoginRequiredMixin, View):
+class BankDetail(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_bank'
+
     def get(self, request, pk):
         bank = get_object_or_404(
             Bank,
@@ -213,10 +222,11 @@ class BankDetail(LoginRequiredMixin, View):
         )
 
 
-class BankUpdate(LoginRequiredMixin, UpdateView):
+class BankUpdate(LoginRequiredMixin, UpdateView, PermissionRequiredMixin):
     model = Bank
     form_class = BankUpdateForm
     template_name = 'app/bank_update.html'
+    permission_required = 'app.change_bank'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -228,9 +238,10 @@ class BankUpdate(LoginRequiredMixin, UpdateView):
         return reverse_lazy('bank_detail', kwargs={'pk': bank_id})
 
 
-class BankDelete(LoginRequiredMixin, DeleteView):
+class BankDelete(LoginRequiredMixin, DeleteView, PermissionRequiredMixin):
     model = Bank
     template_name = 'app/bank_confirm_delete.html'
+    permission_required = 'app.delete_bank'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -243,9 +254,10 @@ class BankDelete(LoginRequiredMixin, DeleteView):
         return HttpResponseRedirect(reverse_lazy('bank'))
 
 
-class CardList(LoginRequiredMixin, ListView):
+class CardList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     model = User
     template_name = 'app/card_list.html'
+    permission_required = 'app.view_card'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -256,10 +268,11 @@ class CardList(LoginRequiredMixin, ListView):
         return context
 
 
-class CardCreate(LoginRequiredMixin, CreateView):
+class CardCreate(LoginRequiredMixin, CreateView, PermissionRequiredMixin):
     form_class = CardCreateForm
     model = Card
     template_name = 'app/card_create.html'
+    permission_required = 'app.add_card'
 
     def get_context_data(self, **kwargs):
         context = super(CardCreate, self).get_context_data(**kwargs)
@@ -290,7 +303,9 @@ class CardCreate(LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(reverse_lazy('card'))
 
 
-class CardDetail(LoginRequiredMixin, View):
+class CardDetail(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_card'
+
     def get(self, request, pk):
         card = get_object_or_404(
             Card,
@@ -304,10 +319,11 @@ class CardDetail(LoginRequiredMixin, View):
         )
 
 
-class CardUpdate(LoginRequiredMixin, UpdateView):
+class CardUpdate(LoginRequiredMixin, UpdateView, PermissionRequiredMixin):
     model = Card
     form_class = CardUpdateForm
     template_name = 'app/card_update.html'
+    permission_required = 'app.add_card'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -319,9 +335,10 @@ class CardUpdate(LoginRequiredMixin, UpdateView):
         return reverse_lazy('card_detail', kwargs={'pk': card_id})
 
 
-class CardDelete(LoginRequiredMixin, DeleteView):
+class CardDelete(LoginRequiredMixin, DeleteView, PermissionRequiredMixin):
     model = Card
     template_name = 'app/card_confirm_delete.html'
+    permission_required = 'app.delete_card'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -335,10 +352,10 @@ class CardDelete(LoginRequiredMixin, DeleteView):
         return HttpResponseRedirect(reverse_lazy('card'))
 
 
-class ActivityList(LoginRequiredMixin, ListView, PageLinksMixin):
-    paginate_by = 10
+class ActivityList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     model = Transaction
     template_name = 'app/activity_list.html'
+    permission_required = 'app.view_transaction'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -389,10 +406,11 @@ class SendSearchUser(LoginRequiredMixin, ListView):
         return context
 
 
-class SendMoney(LoginRequiredMixin, CreateView):
+class SendMoney(LoginRequiredMixin, CreateView, PermissionRequiredMixin):
     form_class = SendMoneyForm
     model = Transaction
     template_name = 'app/send_money_form.html'
+    permission_required = 'app.add_transaction'
 
     def get_context_data(self, **kwargs):
         context = super(SendMoney, self).get_context_data(**kwargs)
@@ -467,10 +485,11 @@ class RequestSearchUser(LoginRequiredMixin, ListView):
         return context
 
 
-class RequestMoney(LoginRequiredMixin, CreateView):
+class RequestMoney(LoginRequiredMixin, CreateView, PermissionRequiredMixin):
     form_class = RequestMoneyForm
     model = Transaction
     template_name = 'app/request_money_form.html'
+    permission_required = 'app.add_transaction'
 
     def get_context_data(self, **kwargs):
         context = super(RequestMoney, self).get_context_data(**kwargs)
@@ -499,9 +518,10 @@ class RequestSuccess(LoginRequiredMixin, View):
         return render(request, 'app/request_success_page.html', {'nbar': 'request'})
 
 
-class IncompleteTranList(LoginRequiredMixin, ListView):
+class IncompleteTranList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     model = Transaction
     template_name = 'app/incomplete_list.html'
+    permission_required = 'app.view_transaction'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -512,7 +532,9 @@ class IncompleteTranList(LoginRequiredMixin, ListView):
         return context
 
 
-class IncompletePayment(LoginRequiredMixin, View):
+class IncompletePayment(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_transaction'
+
     def get(self, request, pk):
         transaction = get_object_or_404(
             Transaction,
@@ -526,10 +548,11 @@ class IncompletePayment(LoginRequiredMixin, View):
         )
 
 
-class IncompletePaymentConfirm(LoginRequiredMixin, UpdateView):
+class IncompletePaymentConfirm(LoginRequiredMixin, UpdateView, PermissionRequiredMixin):
     model = Transaction
     form_class = CompletePaymentForm
     template_name = 'app/payment_confirm.html'
+    permission_required = 'app.change_transaction'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -564,7 +587,9 @@ class PaymentComplete(LoginRequiredMixin, View):
         return render(request, 'app/payment_success.html', {'nbar': 'incomplete'})
 
 
-class IncompleteRequest(LoginRequiredMixin, View):
+class IncompleteRequest(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_transaction'
+
     def get(self, request, pk):
         transaction = get_object_or_404(
             Transaction,
@@ -578,13 +603,219 @@ class IncompleteRequest(LoginRequiredMixin, View):
         )
 
 
-class IncompleteRequestDelete(LoginRequiredMixin, DeleteView):
+class IncompleteRequestDelete(LoginRequiredMixin, DeleteView, PermissionRequiredMixin):
     model = Transaction
     template_name = 'app/request_delete.html'
     success_url = reverse_lazy('incomplete')
+    permission_required = 'app.delete_transaction'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tran'] = self.kwargs['pk']
         context['nbar'] = 'incomplete'
         return context
+
+
+class StaffUserList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
+    model = User
+    template_name = 'staff/user_list.html'
+    permission_required = 'app.view_user'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_list'] = User.objects.filter(is_staff=False)
+        return context
+
+
+class StaffUserInfo(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_user'
+
+    def get(self, request, pk):
+        user = get_object_or_404(
+            User,
+            pk=pk
+        )
+
+        return render(
+            request,
+            'staff/user_information.html',
+            {'user': user}
+        )
+
+
+class StaffUserTran(LoginRequiredMixin, ListView, PermissionRequiredMixin):
+    model = User
+    template_name = 'staff/user_transaction_list.html'
+    permission_required = 'app.view_transaction'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        target_user = self.kwargs['pk']
+        context['tran_list'] = Transaction.objects.filter(Q(receiver=target_user, is_complete=True) |
+                                                          Q(creator=target_user, is_complete=True)).order_by('-create_date')
+        context['user'] = User.objects.get(id=self.kwargs.get('pk'))
+        return context
+
+
+class StaffUserTranDetail(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_transaction'
+
+    def get(self, request, pk, tpk):
+        user = get_object_or_404(
+            User,
+            pk=pk
+        )
+
+        tran = get_object_or_404(
+            Transaction,
+            pk=tpk
+        )
+
+        return render(
+            request,
+            'staff/user_transaction_detail.html',
+            {'user': user, 'tran': tran}
+        )
+
+
+class StaffUserTranDelete(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.delete_transaction'
+
+    def get(self, request, pk, tpk):
+        user = get_object_or_404(
+            User,
+            pk=pk
+        )
+
+        tran = get_object_or_404(
+            Transaction,
+            pk=tpk
+        )
+        return render(
+            request,
+            'staff/user_transaction_delete.html',
+            {'user': user, 'tran': tran}
+        )
+
+
+    def post(self, request, pk, tpk):
+        tran = Transaction.objects.get(transaction_id=tpk)
+
+        creator_payment = PaymentMethod.objects.filter(user=tran.creator, method_type='account')
+        creator_account = Account.objects.filter(payment=creator_payment[0])
+        creator_account.update(balance=F('balance') + tran.amount)
+
+        receiver_payment = PaymentMethod.objects.filter(user=tran.receiver, method_type='account')
+        receiver_account = Account.objects.filter(payment=receiver_payment[0])
+        receiver_account.update(balance=F('balance') - tran.amount)
+        tran.delete()
+        return HttpResponseRedirect(reverse_lazy('staff_user_tran', kwargs={'pk': pk}))
+
+
+class StaffUserPayment(LoginRequiredMixin, ListView, PermissionRequiredMixin):
+    model = User
+    template_name = 'staff/user_payment_list.html'
+    permission_required = ('app.view_account', 'app.view_bank', 'app.view_card')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.kwargs['pk']
+
+        context['account'] = Account.objects.filter(payment__user=user)
+        context['bank_list'] = Bank.objects.filter(payment__user=user)
+        context['card_list'] = Card.objects.filter(payment__user=user)
+        context['user'] = User.objects.get(id=self.kwargs.get('pk'))
+        return context
+
+
+class StaffUserBankDetail(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = ('app.view_bank')
+    def get(self, request, pk, bpk):
+        user = get_object_or_404(
+            User,
+            pk=pk
+        )
+
+        bank = get_object_or_404(
+            Bank,
+            pk=bpk
+        )
+
+        return render(
+            request,
+            'staff/user_bank_detail.html',
+            {'user': user, 'bank': bank}
+        )
+
+
+class StaffUserCardDetail(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_card'
+
+    def get(self, request, pk, cpk):
+        user = get_object_or_404(
+            User,
+            pk=pk
+        )
+
+        card = get_object_or_404(
+            Card,
+            pk=cpk
+        )
+
+        return render(
+            request,
+            'staff/user_card_detail.html',
+            {'user': user, 'card': card}
+        )
+
+
+class StaffTransactionList(LoginRequiredMixin, ListView, PermissionRequiredMixin):
+    model = Transaction
+    template_name = 'staff/transaction_list.html'
+    permission_required = 'app.view_transaction'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tran_list'] = Transaction.objects.all()
+        return context
+
+
+class StaffTranDetail(LoginRequiredMixin, View, PermissionRequiredMixin):
+    permission_required = 'app.view_transaction'
+
+    def get(self, request, pk):
+        tran = get_object_or_404(
+            Transaction,
+            pk=pk
+        )
+
+        return render(
+            request,
+            'staff/transaction_detail.html',
+            {'tran': tran}
+        )
+
+
+class StaffTranDelete(LoginRequiredMixin, DeleteView, PermissionRequiredMixin):
+    model = Transaction
+    template_name = 'staff/transaction_delete.html'
+    permission_required = 'app.delete_transaction'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tran'] = self.kwargs['pk']
+        return context
+
+    def delete(self, request, *args, **kwargs):
+        tran = Transaction.objects.get(transaction_id=kwargs.get('pk'))
+
+        creator_payment = PaymentMethod.objects.filter(user=tran.creator, method_type='account')
+        creator_account = Account.objects.filter(payment=creator_payment[0])
+        creator_account.update(balance=F('balance') + tran.amount)
+
+        receiver_payment = PaymentMethod.objects.filter(user=tran.receiver, method_type='account')
+        receiver_account = Account.objects.filter(payment=receiver_payment[0])
+        receiver_account.update(balance=F('balance') - tran.amount)
+
+        tran.delete()
+        return HttpResponseRedirect(reverse_lazy('staff_transaction'))

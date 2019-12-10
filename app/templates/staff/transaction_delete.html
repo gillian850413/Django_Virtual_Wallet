@@ -1,0 +1,50 @@
+{% extends 'staff/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+        <!-- bradcam_area_start  -->
+    <div class="bradcam_area breadcam_bg bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Transaction</h3>
+                        <p><a href="{% url 'staff_transaction' %}">Home /</a> Transaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+    <section class="blog_area section-padding">
+        <div class="container">
+            <div class="row justify-content-md-center" >
+                <div class="col-lg-8 mb-5 mb-lg-0" >
+                    <article class="blog_item" >
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+                            <a href="#" class="blog_item_date">
+                                <h3><div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div></h3>
+
+                            </a>
+                        </div>
+                        <div class="blog_details">
+                            <h2>Transaction Information</h2><hr>
+                            <form action="{{ transaction.get_delete_url }}" method="post">
+                                {% csrf_token %}
+                                <ul class="list cat-list">
+                                    <li>Are you sure you want to delete this transaction?</li>
+                                </ul><br>
+                                <button class='button rounded-0 btn btn-outline-danger'
+                                        type="submit">Delete</button> &nbsp;&nbsp;
+                                <button class="btn rounded-0 btn-outline-primary">
+                                     <a href="{% url 'staff_tran_detail' transaction.pk%}">Cancel </a>
+                                </button>
+                            </form>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

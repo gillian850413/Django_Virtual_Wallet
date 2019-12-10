@@ -1,0 +1,50 @@
+{% extends 'staff/user_detail.html' %}
+{% load static from staticfiles %}
+
+{% block info %}         
+    <article class="blog_item" >
+        <div class="blog_item_img">
+            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+            <a href="#" class="blog_item_date">
+                <h3><div class="icon"><i class="flaticon-money-2" aria-hidden="true"></i></div></h3>
+    
+            </a>
+        </div>
+        <div class="blog_details">
+            <h2>{{ user }}'s Transactions</h2>
+            <div class="input-group-icon mt-10">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tran #</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Create Date</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for tran in tran_list %}
+                            <tr>
+                                <th scope="row">{{ tran.transaction_id }}</th>
+                                <td>{{ tran.transaction_type }}</td>
+                                <td>{{ tran.amount }}</td>
+                                <td>{{ tran.create_date | date:"Y-m-d"}}</td>
+                                <td align="right">
+                                    <button class="btn rounded-0 btn-outline-primary">
+                                        <a href="{% url 'staff_user_tran_detail' user.pk tran.pk %}">Detail</a>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <th scope="row"></th>
+                                <td>There are no transactions.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </article>
+{% endblock %}

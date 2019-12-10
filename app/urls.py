@@ -28,6 +28,18 @@ from app.views import (
     PaymentComplete,
     IncompleteRequest,
     IncompleteRequestDelete,
+    StaffTransactionList,
+    StaffTranDetail,
+    StaffTranDelete,
+    StaffUserList,
+    StaffUserInfo,
+    StaffUserTran,
+    StaffUserTranDetail,
+    StaffUserTranDelete,
+    StaffUserPayment,
+    StaffUserBankDetail,
+    StaffUserCardDetail,
+
 )
 
 urlpatterns = [
@@ -59,4 +71,17 @@ urlpatterns = [
     path('incomplete/payment/complete/', PaymentComplete.as_view(), name='payment_complete'),
     path('incomplete/request/<int:pk>/detail/', IncompleteRequest.as_view(), name='incomplete_request'),
     path('incomplete/request/<int:pk>/delete/', IncompleteRequestDelete.as_view(), name='incomplete_request_delete'),
+
+    path('staff/transaction/', StaffTransactionList.as_view(), name='staff_transaction'),
+    path('staff/transaction/<int:pk>/detail/', StaffTranDetail.as_view(), name='staff_tran_detail'),
+    path('staff/transaction/<int:pk>/delete/', StaffTranDelete.as_view(), name='staff_tran_delete'),
+    path('staff/user/', StaffUserList.as_view(), name='staff_user'),
+    path('staff/user/<int:pk>/info/', StaffUserInfo.as_view(), name='staff_user_info'),
+    path('staff/user/<int:pk>/payment/', StaffUserPayment.as_view(), name='staff_user_pay'),
+    path('staff/user/<int:pk>/bank/<int:bpk>', StaffUserBankDetail.as_view(), name='staff_user_bank'),
+    path('staff/user/<int:pk>/card/<int:cpk>/', StaffUserCardDetail.as_view(), name='staff_user_card'),
+    path('staff/user/<int:pk>/transactions/', StaffUserTran.as_view(), name='staff_user_tran'),
+    path('staff/user/<int:pk>/transactions/<int:tpk>/detail', StaffUserTranDetail.as_view(), name='staff_user_tran_detail'),
+    path('staff/user/<int:pk>/transactions/<int:tpk>/delete', StaffUserTranDelete.as_view(), name='staff_user_tran_delete'),
+
 ]

@@ -102,17 +102,18 @@ Transaction_Type = (
 
 
 Categories = (
-    ('bank', 'Bank Transfer'),
-    ('utilities', 'Bills & Utilities'),
-    ('transportation', 'Auto & Transport'),
-    ('groceries', 'Groceries'),
-    ('shopping', 'Shopping'),
-    ('health', 'Healthcare'),
-    ('education', 'Education'),
-    ('travel', 'Travel'),
-    ('housing', 'Housing'),
-    ('entertainment', 'Entertainment'),
-    ('others', 'Others'),
+    ('Bank', 'Bank Transfer'),
+    ('Utilities', 'Bills & Utilities'),
+    ('Transportation', 'Auto & Transport'),
+    ('Groceries', 'Groceries'),
+    ('Food', 'Food'),
+    ('Shopping', 'Shopping'),
+    ('Health', 'Healthcare'),
+    ('Education', 'Education'),
+    ('Travel', 'Travel'),
+    ('Housing', 'Housing'),
+    ('Entertainment', 'Entertainment'),
+    ('Others', 'Others'),
 )
 
 
@@ -128,6 +129,12 @@ class Transaction(models.Model):
     creator = models.ForeignKey(User, related_name='creator', on_delete=models.PROTECT, default='')
     payment_method = models.ForeignKey(PaymentMethod, related_name='payment_method',
                                        on_delete=models.PROTECT, default='', null=True)
+
+    def get_absolute_url(self):
+        return reverse('staff_tran_detail', kwargs={'pk': self.pk})
+
+    def get_delete_url(self):
+        return reverse('staff_tran_delete', kwargs={'pk': self.pk})
 
     def save(self, *args, **kwargs):
         # ensure that the database only stores 2 decimal places

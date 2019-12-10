@@ -1,0 +1,27 @@
+{% extends 'staff/user_detail.html' %}
+{% load static from staticfiles %}
+
+{% block info %}
+    <article class="blog_item" >
+        <div class="blog_item_img">
+            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+            <a href="#" class="blog_item_date">
+                <h3><div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div></h3>
+
+            </a>
+        </div>
+        <div class="blog_details">
+            <h2>{{ user.first_name }}'s Information</h2><hr>
+            <div class="input-group-icon mt-10">
+                 <ul class="list cat-list">
+                     <li><b style="color: black">Username:</b>&emsp;{{ user.username }}</li><hr>
+                     <li><b style="color: black">First Name:</b>&emsp;{{ user.first_name }}</li><hr>
+                     <li><b style="color: black">Last Name:</b>&emsp;{{ user.last_name }}</li><hr>
+                     <li><b style="color: black">Birthday:</b>&emsp;{{ user.profile.birthday | date:'Y-m-d' }}</li><hr>
+                     <li><b style="color: black">Address:</b>&emsp;{{ user.profile.address }}</li><hr>
+                </ul>
+            </div>
+            <br>
+        </div>
+    </article>
+{% endblock %}

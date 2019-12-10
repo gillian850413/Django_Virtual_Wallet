@@ -284,10 +284,10 @@ class SendMoneyForm(forms.ModelForm):
 
     def clean_payment_method(self):
         payment = self.cleaned_data['payment_method']
-        if payment.method_type=='account' and self.clean_amount() > payment.account.balance:
+        if payment.method_type=='account' and payment.account.balance <= 0:
             message = format_html('Insufficient balance. <br> Please select another payment method or '
                                   'add a bank or card in <a href="{}">Wallet</a>.',
-                                  reverse_lazy('wallet'))
+                                  reverse_lazy('account'))
             self.add_error('payment_method', message)
         else:
             return payment
@@ -337,7 +337,7 @@ class CompletePaymentForm(forms.ModelForm):
         if payment.method_type=='account' and payment.account.balance <= 0:
             message = format_html('Account balance is 0. <br> Please select another payment method or '
                                   'add a bank or card in <a href="{}">Wallet</a>.',
-                                  reverse_lazy('wallet'))
+                                  reverse_lazy('account'))
             self.add_error('payment_method', message)
         else:
             return payment

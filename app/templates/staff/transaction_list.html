@@ -1,0 +1,65 @@
+{% extends 'staff/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <!-- bradcam_area_start  -->
+    <div class="bradcam_area breadcam_bg bradcam_overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Transactions</h3>
+                        <p><a href="{% url 'staff_user' %}">Home /</a> Transactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- bradcam_area_end  -->
+    <section>
+        <div class="whole-wrap">
+            <div class="container box_1170">
+                <div class="section-top-border">
+                    <h2 class="mb-30"><b style="color: black;">Transactions</b></h2>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Transaction Type</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Creator</th>
+                                <th scope="col">Create Date</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tran in tran_list %}
+                                <tr>
+                                    <td>{{ tran.transaction_id }}</td>
+                                    <td>{{ tran.transaction_type }}</td>
+                                    <td>{{ tran.category }}</td>
+                                    <td>{{ tran.amount }}</td>
+                                    <td>{{ tran.creator }}</td>
+                                    <td>{{ tran.create_date | date:'Y-m-d' }}</td>
+                                    <td align="right">
+                                        <a href="{{ tran.get_absolute_url }}">
+                                            <button class="btn rounded-0 btn-outline-primary">Detail</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>There are no transactions.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

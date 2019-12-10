@@ -49,11 +49,19 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="{% url 'index' %}">Home</a></li>
-                                        <li><a href="{% url 'activity' %}">Activity</a></li>
-                                        <li><a href="{% url 'send' %}">Send & Request</a></li>
-                                        <li><a href="{% url 'account' %}">Wallet</a></li>
-                                        <li><a href="{% url 'profile' %}">User Profile</a></li>
+                                        <li><a href="{% url 'index' %}">Home</a></li>
+                                        {% if perms.app.add_transaction%}
+                                            <li><a href="{% url 'activity' %}">Activity</a></li>
+                                        {% endif %}
+                                        {% if perms.app.add_transaction %}
+                                            <li><a href="{% url 'send' %}">Send & Request</a>
+                                        {% endif %}
+                                        {% if perms.app.add_account%}
+                                            <li><a href="{% url 'account' %}">Wallet</a></li>
+                                        {% endif %}
+                                        {% if perms.app.change_profile %}
+                                            <li><a href="{% url 'profile' %}">User Profile</a></li>
+                                        {% endif %}
                                     </ul>
                                 </nav>
                             </div>

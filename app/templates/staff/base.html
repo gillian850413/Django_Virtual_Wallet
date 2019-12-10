@@ -1,4 +1,4 @@
-{% load static from staticfiles %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -32,10 +32,6 @@
 </head>
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-
     <!-- header-start -->
     <header>
         <div class="header-area ">
@@ -54,26 +50,12 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="{% url 'index' %}">Home</a></li>
-                                        {% if perms.app.add_transaction%}
-                                            <li><a href="{% url 'activity' %}">Activity</a></li>
-                                        {% endif %}
-                                        {% if perms.app.add_transaction %}
-                                            <li><a href="{% url 'send' %}">Send & Request</a>
-                                        {% endif %}
-                                        {% if perms.app.add_account%}
-                                            <li><a href="{% url 'account' %}">Wallet</a></li>
-                                        {% endif %}
-                                        {% if perms.app.change_profile %}
-                                            <li><a href="{% url 'profile' %}">User Profile</a></li>
-                                        {% endif %}
-
                                         {% if perms.app.change_transaction %}
                                             <li><a href="{% url 'staff_user' %}">User List</a></li>
                                         {% endif %}
                                         {% if perms.app.change_transaction %}
                                             <li><a href="{% url 'staff_transaction' %}">Transactions</a></li>
                                         {% endif %}
-
                                     </ul>
                                 </nav>
                             </div>
@@ -99,81 +81,9 @@
     </header>
     <!-- header-end -->
 
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="slider_text ">
-                                <h3> <span>Easy Pay</span> </h3>
-                                <p>With easy pay, you can not only send and transfer money <br> within a second, but also
-                                    track your spendings in few steps.</p>
-                                {% if perm.app.add_account %}
-                                    <a href="{% url 'account' %}" class="boxed-btn3">Check Wallet</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- slider_area_end -->
-
-    <!-- service_area_start -->
-    <div class="service_area">
-        <div class="container p-0">
-            <div class="row no-gutters">
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service">
-                        <div class="icon">
-                            <i class="flaticon-money"></i>
-                        </div>
-                        <h3>Send</h3>
-                        <p>Send your money to your friend within a minute.</p>
-                        {% if perms.app.add_transaction %}
-                            <a href="{% url 'send' %}" class="boxed-btn3-white">Send</a>
-                        {% else %}
-                            <br>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service">
-                        <div class="icon">
-                            <i class="flaticon-money-2"></i>
-                        </div>
-                        <h3>Request</h3>
-                        <p>Request money from your friend without hesitation.</p>
-                        {% if perms.app.add_transaction %}
-                            <a href="{% url 'request' %}" class="boxed-btn3-white">Request</a>
-                        {% else %}
-                            <br>
-                        {% endif %}
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4">
-                    <div class="single_service">
-                        <div class="icon">
-                            <i class="flaticon-bank"></i>
-                        </div>
-                        <h3>Transfer</h3>
-                        <p>Transfer money to bank with only one click.</p>
-                        {% if perms.app.change_account %}
-                            <a href="{% url 'account' %}" class="boxed-btn3-white">Transfer</a>
-                        {% else %}
-                            <br>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- service_area_end -->
-
+    {% block content %}
+        This is default content!
+    {% endblock %}
 
     <!-- footer start -->
     <footer class="footer">
@@ -191,8 +101,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     </div>
                 </div>
             </div>
+        </div>
     </footer>
-<!-- footer end  -->
+    <!-- footer end  -->
 
     <!-- link that opens popup -->
 

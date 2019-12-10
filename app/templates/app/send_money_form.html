@@ -37,16 +37,17 @@
                                         <div class="form-group">
                                             <select class="form-control form-select " id="default-select" name="category">
                                                 <option value="" selected disabled hidden>Categories</option>
-                                                <option value="utilities">Bills & Utilities</option>
-                                                <option value="transportation">Auto & Transport</option>
-                                                <option value="groceries">Groceries</option>
-                                                <option value="shopping">Shopping</option>
-                                                <option value="health">Health Care</option>
-                                                <option value="education">Education</option>
-                                                <option value="travel">Travel</option>
-                                                <option value="housing">Housing</option>
-                                                <option value="entertainment">Entertainment</option>
-                                                <option value="others">Others</option>
+                                                <option value="Utilities">Bills & Utilities</option>
+                                                <option value="Transportation">Auto & Transport</option>
+                                                <option value="Groceries">Groceries</option>
+                                                <option value="Food">Food</option>
+                                                <option value="Shopping">Shopping</option>
+                                                <option value="Health">Health Care</option>
+                                                <option value="Education">Education</option>
+                                                <option value="Travel">Travel</option>
+                                                <option value="Housing">Housing</option>
+                                                <option value="Entertainment">Entertainment</option>
+                                                <option value="Others">Others</option>
                                             </select>
                                         </div>
                                     </div>
@@ -64,11 +65,11 @@
                                             <select class="form-control form-select " id="default-select" name="payment_method">
                                                 <option value="" selected disabled hidden>Payment Method</option>
                                                 {% for payment in sender_payment_list%}
-                                                    {% if payment.method_type == 'account'%}
+                                                    {% if payment.method_type == 'account' and payment.account != ''%}
                                                         <option value={{ payment.method_id }}>{{ payment.account }}</option>
-                                                    {% elif payment.method_type == 'bank' %}
+                                                    {% elif payment.method_type == 'bank' and payment.bank != '' %}
                                                         <option value={{ payment.method_id }}>{{ payment.bank }}</option>
-                                                    {% elif payment.method_type == 'card' %}
+                                                    {% elif payment.method_type == 'card' and payment.card != '' %}
                                                         <option value={{ payment.method_id }}>{{ payment.card }}</option>
                                                     {% endif %}
                                                 {% endfor %}
