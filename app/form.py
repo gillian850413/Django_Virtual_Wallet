@@ -217,6 +217,24 @@ class CardCreateForm(forms.ModelForm):
             return self.cleaned_data['expiration_date']
 
 
+class BankUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Bank
+        exclude = ['user']
+        fields = ('owner_first_name', 'owner_last_name')
+
+    def clean_owner_first_name(self):
+        return self.cleaned_data['owner_first_name'].strip()
+
+    def clean_owner_last_name(self):
+        return self.cleaned_data['owner_last_name'].strip()
+
+    def __init__(self, *args, **kwargs):
+        super(BankUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['owner_first_name'].error_messages = {'required': 'The field "Bank Holder First Name" is required'}
+        self.fields['owner_last_name'].error_messages = {'required': 'The field "Bank Holder Last Name" is required'}
+
+
 class CardUpdateForm(forms.ModelForm):
     class Meta:
         model = Card

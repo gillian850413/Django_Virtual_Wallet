@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static from staticfiles %}
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
@@ -45,7 +45,7 @@
                         <div class="col-xl-3 col-lg-2">
                             <div class="logo">
                                 <a href="{% url 'index' %}">
-                                    <img src="../../static/img/logo.png" alt="">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
                                 </a>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                         <li><a class="active" href="{% url 'index' %}">Home</a></li>
                                         <li><a href="{% url 'activity' %}">Activity</a></li>
                                         <li><a href="{% url 'send' %}">Send & Request</a></li>
-                                        <li><a href="{% url 'wallet' %}">Wallet</a></li>
+                                        <li><a href="{% url 'account' %}">Wallet</a></li>
                                         <li><a href="{% url 'profile' %}">User Profile</a></li>
                                     </ul>
                                 </nav>
@@ -94,7 +94,7 @@
                                 <h3> <span>Easy Pay</span> </h3>
                                 <p>With easy pay, you can not only send and transfer money <br> within a second, but also
                                     track your spendings in few steps.</p>
-                                <a href="{% url 'wallet' %}" class="boxed-btn3">Check Wallet</a>
+                                <a href="{% url 'account' %}" class="boxed-btn3">Check Wallet</a>
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         </div>
                         <h3>Transfer</h3>
                         <p>Transfer money to bank with only one click.</p>
-                        <a href="{% url 'wallet' %}" class="boxed-btn3-white">Transfer</a>
+                        <a href="{% url 'account' %}" class="boxed-btn3-white">Transfer</a>
                     </div>
                 </div>
             </div>

@@ -14,7 +14,7 @@
                             </a>
                         </div>
                         <div class="blog_details">
-                            <h2>Send Payment To: {{ tran.creator }}</h2><hr>
+                            <h2>Request To: {{ tran.creator }}</h2><hr>
                             <form action="#">
                                 <ul class="list cat-list">
                                     <li><b style="color: black">Category:</b>&emsp;{{ tran.category}}</li><hr>
@@ -22,13 +22,12 @@
                                     <li><b style="color: black">Amount:</b>&emsp;{{ tran.amount}}</li><hr>
                                 </ul>&nbsp;&nbsp;
                                 <br>
-                                <a href="{% url 'incomplete_payment_confirm' tran.pk %}"
-                                   class="btn rounded-0 btn-outline-primary">Complete Payment</a>
+                                <a href="{% url 'incomplete_request_delete' tran.pk %}"
+                                   class="btn rounded-0 btn-outline-danger">Cancel Request</a>
                             </form>
                             <br>
                         </div>
                     </article>
-
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
@@ -41,7 +40,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'wallet' %}" >
+                                    <a href="{% url 'account' %}" >
                                         <p>Payment Method</p>
                                     </a>
                                 </li>

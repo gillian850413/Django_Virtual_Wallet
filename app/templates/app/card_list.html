@@ -1,0 +1,32 @@
+{% extends 'app/wallet_page.html' %}
+{% load static from staticfiles %}
+
+{% block card %}
+    <article class="blog_item" >
+        <div class="blog_item_img">
+            <img class="card-img rounded-0" src="../../static/img/banner/profile_banner.png" alt="">
+            <a href="#" class="blog_item_date">
+                <h3><div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div></h3>
+
+            </a>
+        </div>
+        <div class="blog_details">
+            <h2>Card Information</h2><hr>
+            <div class="input-group-icon mt-10">
+                {% for card in card_list %}
+                    <ul class="list cat-list">
+                        <li><a href="{{ card.get_absolute_url }}">
+                            <b style="color: black">Card:</b>&emsp;{{ card }}</a></li><hr>
+                    </ul>
+                    {% empty %}
+                    <li><em>There are currently no cards available.</em></li>
+                {% endfor %}
+            </div>
+            <br>
+            <div class="input-group-icon mt-10">
+                 <a href="{% url 'card_create' %}"
+                    class="btn rounded-0 btn-outline-primary">Add Card</a>
+            </div>
+        </div>
+    </article>
+{% endblock %}

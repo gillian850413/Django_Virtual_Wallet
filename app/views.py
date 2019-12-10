@@ -1,20 +1,20 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, render_to_response, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth.models import Group, User
 from django.db.models import Q, F
 from django.views import View
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView, FormView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib import messages
-
 from app.form import (
     UserRegistrationForm,
     UserForm,
     UserProfileForm,
     UserResetPwdForm,
     BankCreateForm,
+    BankUpdateForm,
     CardCreateForm,
     CardUpdateForm,
     SearchUserForm,
@@ -61,7 +61,6 @@ class UserRegistration(CreateView):
         return self.request.user
 
     def form_valid(self, form):
-
         user = form.save()
         password = form.cleaned_data['password']
 
@@ -133,16 +132,14 @@ class UserProfileUpdate(LoginRequiredMixin, UpdateView):
         return HttpResponseRedirect(reverse_lazy('profile'))
 
 
-class WalletList(LoginRequiredMixin, ListView):
+class AccountList(LoginRequiredMixin, ListView):
     model = User
-    template_name = 'app/wallet_list.html'
+    template_name = 'app/account_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
-
-        context['bank_list'] = Bank.objects.filter(payment__user=user)
-        context['card_list'] = Card.objects.filter(payment__user=user)
+        context['nbar'] = 'account'
         context['account'] = Account.objects.filter(payment__user=user)
         return context
 
@@ -153,11 +150,23 @@ class AccountTransfer(LoginRequiredMixin, View):
             Account,
             pk=pk,
         )
-        return render(request, 'app/account_transfer_confirm.html', {'account': account})
+        return render(request, 'app/account_transfer_confirm.html', {'account': account, 'nbar': 'account'})
 
     def post(self, request, pk):
         Account.objects.filter(payment__method_id=self.kwargs.get('pk')).update(balance=0)
-        return HttpResponseRedirect(reverse_lazy('wallet'))
+        return HttpResponseRedirect(reverse_lazy('account'))
+
+
+class BankList(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'app/bank_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+        context['nbar'] = 'bank'
+        context['bank_list'] = Bank.objects.filter(payment__user=user)
+        return context
 
 
 class BankCreate(LoginRequiredMixin, CreateView):
@@ -168,6 +177,7 @@ class BankCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(BankCreate, self).get_context_data(**kwargs)
         context['user'] = self.request.user
+        context['nbar'] = 'bank'
         return context
 
     def form_valid(self, form):
@@ -186,7 +196,7 @@ class BankCreate(LoginRequiredMixin, CreateView):
                             routing_number=bank.routing_number,
                             account_number=bank.account_number)
 
-        return HttpResponseRedirect(reverse_lazy('wallet'))
+        return HttpResponseRedirect(reverse_lazy('bank'))
 
 
 class BankDetail(LoginRequiredMixin, View):
@@ -199,28 +209,51 @@ class BankDetail(LoginRequiredMixin, View):
         return render(
             request,
             'app/bank_detail.html',
-            {'bank': bank, 'user': bank.payment.user}
+            {'bank': bank, 'user': bank.payment.user, 'nbar': 'bank'}
         )
+
+
+class BankUpdate(LoginRequiredMixin, UpdateView):
+    model = Bank
+    form_class = BankUpdateForm
+    template_name = 'app/bank_update.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nbar'] = 'bank'
+        return context
+
+    def get_success_url(self):
+        bank_id = self.kwargs['pk']
+        return reverse_lazy('bank_detail', kwargs={'pk': bank_id})
 
 
 class BankDelete(LoginRequiredMixin, DeleteView):
     model = Bank
     template_name = 'app/bank_confirm_delete.html'
-    # success_url = reverse_lazy('wallet')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['nbar'] = 'bank'
         return context
 
     def delete(self, request, *args, **kwargs):
-        user = request.user
-
         bank = Bank.objects.get(id=kwargs.get('pk'))
-        payment = PaymentMethod.objects.filter(user=user, method_id=bank.payment.method_id)
         bank.delete()
-        payment.delete()
+        return HttpResponseRedirect(reverse_lazy('bank'))
 
-        return HttpResponseRedirect(reverse_lazy('wallet'))
+
+class CardList(LoginRequiredMixin, ListView):
+    model = User
+    template_name = 'app/card_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = self.request.user
+
+        context['nbar'] = 'card'
+        context['card_list'] = Card.objects.filter(payment__user=user)
+        return context
 
 
 class CardCreate(LoginRequiredMixin, CreateView):
@@ -231,6 +264,7 @@ class CardCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super(CardCreate, self).get_context_data(**kwargs)
         context['user'] = self.request.user
+        context['nbar'] = 'card'
         return context
 
     def form_valid(self, form):
@@ -253,7 +287,7 @@ class CardCreate(LoginRequiredMixin, CreateView):
                             security_code=card.security_code,
                             expiration_date=card.expiration_date)
 
-        return HttpResponseRedirect(reverse_lazy('wallet'))
+        return HttpResponseRedirect(reverse_lazy('card'))
 
 
 class CardDetail(LoginRequiredMixin, View):
@@ -266,7 +300,7 @@ class CardDetail(LoginRequiredMixin, View):
         return render(
             request,
             'app/card_detail.html',
-            {'card': card, 'user': card.payment.user}
+            {'card': card, 'user': card.payment.user, 'nbar': 'card'}
         )
 
 
@@ -277,6 +311,7 @@ class CardUpdate(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['nbar'] = 'card'
         return context
 
     def get_success_url(self):
@@ -290,15 +325,14 @@ class CardDelete(LoginRequiredMixin, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['nbar'] = 'card'
         return context
 
     def delete(self, request, *args, **kwargs):
-        user = request.user
         card = Card.objects.get(id=kwargs.get('pk'))
-        payment = PaymentMethod.objects.filter(user=user, method_id=card.payment.method_id)
         card.delete()
-        payment.delete()
-        return HttpResponseRedirect(reverse_lazy('wallet'))
+
+        return HttpResponseRedirect(reverse_lazy('card'))
 
 
 class ActivityList(LoginRequiredMixin, ListView, PageLinksMixin):
@@ -467,7 +501,7 @@ class RequestSuccess(LoginRequiredMixin, View):
 
 class IncompleteTranList(LoginRequiredMixin, ListView):
     model = Transaction
-    template_name = 'app/transaction_incomplete_list.html'
+    template_name = 'app/incomplete_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -487,7 +521,7 @@ class IncompletePayment(LoginRequiredMixin, View):
 
         return render(
             request,
-            'app/transaction_incomplete_payment.html',
+            'app/incomplete_payment.html',
             {'tran': transaction, 'user': self.request.user, 'nbar': 'incomplete'}
         )
 
@@ -495,7 +529,7 @@ class IncompletePayment(LoginRequiredMixin, View):
 class IncompletePaymentConfirm(LoginRequiredMixin, UpdateView):
     model = Transaction
     form_class = CompletePaymentForm
-    template_name = 'app/transaction_payment_confirm.html'
+    template_name = 'app/payment_confirm.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -527,7 +561,7 @@ class IncompletePaymentConfirm(LoginRequiredMixin, UpdateView):
 
 class PaymentComplete(LoginRequiredMixin, View):
     def get(self, request):
-        return render(request, 'app/transaction_payment_success.html', {'nbar': 'incomplete'})
+        return render(request, 'app/payment_success.html', {'nbar': 'incomplete'})
 
 
 class IncompleteRequest(LoginRequiredMixin, View):
@@ -539,14 +573,14 @@ class IncompleteRequest(LoginRequiredMixin, View):
 
         return render(
             request,
-            'app/transaction_incomplete_request.html',
+            'app/incomplete_request.html',
             {'tran': transaction, 'user': self.request.user, 'nbar': 'incomplete'}
         )
 
 
 class IncompleteRequestDelete(LoginRequiredMixin, DeleteView):
     model = Transaction
-    template_name = 'app/transaction_request_delete.html'
+    template_name = 'app/request_delete.html'
     success_url = reverse_lazy('incomplete')
 
     def get_context_data(self, **kwargs):

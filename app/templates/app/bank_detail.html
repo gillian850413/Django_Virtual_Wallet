@@ -1,7 +1,7 @@
 {% extends 'app/wallet_page.html' %}
 {% load static from staticfiles %}
 
-{% block wallet_info %}
+{% block bank %}
 
 <!--================Blog Area =================-->
     <article class="blog_item" >
@@ -17,10 +17,12 @@
             <form action="#">
                 <ul class="list cat-list">
                     <li><b style="color: black">Account Holder First Name:</b>&emsp;{{ bank.owner_first_name}}</li><hr>
-                    <li><b style="color: black">Account Holder Last Name:</b>&emsp;{{ bank.owner_first_name}}</li><hr>
+                    <li><b style="color: black">Account Holder Last Name:</b>&emsp;{{ bank.owner_last_name}}</li><hr>
                     <li><b style="color: black">Routing Number:</b>&emsp;{{ bank.routing_number}}</li><hr>
                     <li><b style="color: black">Account Number:</b>&emsp;{{ bank.account_number}}</li><hr>
                 </ul>
+                <a href="{% url 'bank_update' bank.pk %}"
+                   class="btn rounded-0 btn-outline-primary">Edit Bank</a> &nbsp;&nbsp;
                 <a href="{% url 'bank_delete' bank.pk%}"
                    class="btn rounded-0 btn-outline-danger">Delete Bank</a>
             </form>

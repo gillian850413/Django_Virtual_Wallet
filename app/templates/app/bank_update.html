@@ -2,19 +2,17 @@
 {% load static from staticfiles %}
 
 {% block bank %}
-
-<!--================Blog Area =================-->
     <article class="blog_item" >
         <div class="blog_item_img">
-            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner2.png' %}" alt="">
             <a href="#" class="blog_item_date">
-                <h3><div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div></h3>
+                <h3><div class="icon"><i class="fa fa-credit-card" aria-hidden="true"></i></div></h3>
 
             </a>
         </div>
         <div class="blog_details">
-            <h2>Add Bank</h2><hr>
-            <form action="{% url 'bank_create' %}" method="post">
+            <h2>Update Bank</h2><hr>
+            <form action="{{ bank.get_update_url }}" method="post">
                 {% csrf_token %}
                 {% if form.errors %}
                     <div class="alert alert-danger" role="alert">
@@ -30,32 +28,35 @@
                         </ul>
                     </div>
                 {% endif %}
+                <ul class="list cat-list">
+                    <li><b style="color: black">Routing Number:</b>&emsp;{{ bank.routing_number}}</li><hr>
+                    <li><b style="color: black">Account Number:</b>&emsp;{{ bank.account_number}}</li>
+                </ul>
+
+                <hr><br>
+                <b>Update Information</b>
                 <div class="input-group-icon mt-10">
                     <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
                     <input type="text" class="single-input" name="{{ form.owner_first_name.html_name }}"
-                           id="{{ form.owner_first_name.id_for_label }}" placeholder="Account Holder First Name" required>
+                           id="{{ form.owner_first_name.id_for_label }}" value="{{ bank.owner_first_name }}"
+                           placeholder="Card Holder First Name" required>
                 </div>
                 <div class="input-group-icon mt-10">
                     <div class="icon"><i class="fa fa-user" aria-hidden="true"></i></div>
                     <input type="text" class="single-input" name="{{ form.owner_last_name.html_name }}"
-                           id="{{ form.owner_last_name.id_for_label }}" placeholder="Account Holder Last Name" required>
+                           id="{{ form.owner_last_name.id_for_label }}" value="{{ bank.owner_last_name }}"
+                           placeholder="Card Holder Last Name" required>
                 </div>
-                <div class="input-group-icon mt-10">
-                    <div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div>
-                    <input type="text" class="single-input" name="{{ form.routing_number.html_name }}"
-                           id="{{ form.routing_number.id_for_label }}" placeholder="Routing number (9 digits)" required>
-                </div>
-                <div class="input-group-icon mt-10">
-                    <div class="icon"><i class="fa fa-bank" aria-hidden="true"></i></div>
-                    <input type="text" class="single-input" name="{{ form.account_number.html_name }}"
-                           id="{{ form.account_number.id_for_label }}" placeholder="Account Number (10 digits)" required>
-                </div>
+
                 <br>
                 <div class="input-group-icon mt-10">
-                    <button class="button rounded-0 btn btn-outline-primary" type="submit">Add</button> &nbsp;&nbsp;
+                    <button class="button rounded-0 btn btn-outline-primary" type="submit">Update</button> &nbsp;
+                    &nbsp;&nbsp;
+                    <button class="btn rounded-0 btn-outline-primary">
+                        <a href="{{ bank.get_absolute_url }}">Cancel</a>
+                    </button>
                 </div>
             </form>
         </div>
     </article>
-    <!--================Blog Area =================-->
 {% endblock %}

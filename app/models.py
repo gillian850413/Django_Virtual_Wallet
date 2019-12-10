@@ -51,6 +51,9 @@ class Bank(models.Model):
     def get_absolute_url(self):
         return reverse('bank_detail', kwargs={'pk': self.pk})
 
+    def get_update_url(self):
+        return reverse('bank_update', kwargs={'pk': self.pk})
+
     def get_delete_url(self):
         return reverse('bank_delete', kwargs={'pk': self.pk})
 
@@ -65,7 +68,7 @@ Card_Type = (
 
 
 class Card(models.Model):
-    payment = models.OneToOneField(PaymentMethod, on_delete=models.CASCADE)
+    payment = models.OneToOneField(PaymentMethod, on_delete=models.DO_NOTHING)
     card_type = models.CharField(max_length=45, choices=Card_Type)
     card_number = models.CharField(max_length=16, default=None)
     owner_first_name = models.CharField(max_length=45)

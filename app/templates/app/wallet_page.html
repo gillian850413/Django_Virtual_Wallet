@@ -15,47 +15,79 @@
         </div>
     </div>
     <!-- bradcam_area_end  -->
+        <!-- business_expert_area_start  -->
 
+    <div class="business_expert_area">
+        <div class="business_tabs_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <ul class="nav" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'account' %}active{% endif %}"
+                                   id="send-tab" href="{% url 'account' %}" role="tab" >Easy Pay Account</a>
+                            </li>
 
-    <section class="blog_area section-padding">
-        <div class="container">
-            <div class="row" >
-                <div class="col-lg-8 mb-5 mb-lg-0" >
-                    {% block wallet_info %}
-                        default content
-                    {% endblock %}
-                </div>
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">Links</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="{% url 'activity' %}">
-                                        <p>Activity</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'profile' %}" >
-                                        <p>User Profile</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'send' %}" >
-                                        <p>Send & Request</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'incomplete' %}" >
-                                        <p>Incomplete Transactions</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'bank' %}active{% endif %}"
+                                   id="request-tab" href="{% url 'bank' %}" role="tab" >Bank Information</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link {% if nbar == 'card' %}active{% endif %}"
+                                   id="incomplete-tab" href="{% url 'card' %}" role="tab" >Card Information</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        <section class="blog_area section-padding">
+            <div class="container">
+                <div class="row" >
+                    <div class="col-lg-8 mb-5 mb-lg-0" >
+                        {% if nbar == 'account' %}
+                            {% block account %} default {% endblock %}
+                        {% elif nbar == 'bank' %}
+                            {% block bank %} default {% endblock %}
+                        {% elif nbar == 'card' %}
+                            {% block card %} default {% endblock %}
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog_right_sidebar">
+                            <aside class="single_sidebar_widget post_category_widget">
+                                <h4 class="widget_title">Links</h4>
+                                <ul class="list cat-list">
+                                    <li>
+                                        <a href="{% url 'activity' %}">
+                                            <p>Activity</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'profile' %}" >
+                                            <p>User Profile</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'send' %}" >
+                                            <p>Send & Request</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'incomplete' %}" >
+                                            <p>Incomplete Transactions</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
 
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'app/wallet_page.html' %}
+{% load static from staticfiles %}
+
+{% block account %}
+    <article class="blog_item" >
+        <div class="blog_item_img">
+            <img class="card-img rounded-0" src="{% static 'img/banner/profile_banner.png' %}" alt="">
+            <a href="#" class="blog_item_date">
+                <h3><div class="icon"><i class="flaticon-money-2"></i></div></h3>
+
+            </a>
+        </div>
+        <div class="blog_details">
+            <h2>Account Balance</h2>
+            {% for acc in account %}
+                <div class="input-group-icon mt-10">
+                        <font size="6">$ {{ acc.balance }} USD</font>
+                </div>
+                <hr>
+                <div class="input-group-icon mt-10">
+                     <a href="{% url 'activity' %}"><b>View Activity Detail >>></b></a>
+                </div>
+                {% if acc.balance != 0 %}
+                    <div class="input-group-icon mt-10">
+                         <a href="{% url 'account_transfer' acc.pk%}"><b>Transfer >>></b></a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </article>
+
+{% endblock %}

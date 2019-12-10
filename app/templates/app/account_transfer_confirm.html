@@ -1,7 +1,7 @@
 {% extends 'app/wallet_page.html' %}
 {% load static from staticfiles %}
 
-{% block wallet_info %}
+{% block account %}
 
 <!--================Blog Area =================-->
     <article class="blog_item" >
@@ -22,7 +22,7 @@
                 <button class='button rounded-0 btn btn-outline-primary'
                         type="submit">Confirm</button>&nbsp;&nbsp;
                 <button class="btn rounded-0 btn-outline-danger">
-                    <a href="{% url 'wallet' %}">Cancel</a>
+                    <a href="{% url 'account' %}">Cancel</a>
                 </button>
 
             </form>
