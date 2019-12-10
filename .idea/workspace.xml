@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="021e0764-dfc3-4247-be76-f50530e1d12a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/templates/app/activity_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/app/activity_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/staff/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/staff/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/staff/transaction_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/staff/transaction_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/staff/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/staff/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/staff/user_transaction_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/staff/user_transaction_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +16,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/app/activity_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
+            <state relative-caret-position="641">
+              <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="446">
+              <caret line="128" column="11" lean-forward="true" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -81,7 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/templates/app/transaction_payment_confirm.html" />
         <option value="$PROJECT_DIR$/app/templates/app/transaction_request_delete.html" />
         <option value="$PROJECT_DIR$/app/templates/app/wallet_list.html" />
         <option value="$PROJECT_DIR$/app/templates/app/bank_list.html" />
@@ -132,6 +134,7 @@
         <option value="$PROJECT_DIR$/app/templates/staff/user_detail.html" />
         <option value="$PROJECT_DIR$/app/templates/staff/user_transaction_list.html" />
         <option value="$PROJECT_DIR$/app/templates/app/activity_list.html" />
+        <option value="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" />
       </list>
     </option>
   </component>
@@ -159,26 +162,6 @@
               <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chiang_pinhuey_final_project" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="staff" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="chiang_pinhuey_final_project" type="b2602c69:ProjectViewProjectNode" />
@@ -288,18 +271,19 @@
       <workItem from="1575746503108" duration="7964000" />
       <workItem from="1575757551099" duration="54474000" />
       <workItem from="1575881538921" duration="157000" />
-      <workItem from="1575928399496" duration="34527000" />
+      <workItem from="1575928399496" duration="34695000" />
+      <workItem from="1576020913775" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="349705000" />
+    <option name="totallyTimeSpent" value="349888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49819493" visible="true" weight="0.23032904" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49819493" visible="true" weight="0.23319027" />
       <window_info id="Structure" order="1" sideWeight="0.50180507" side_tool="true" weight="0.23247497" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -355,13 +339,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/templates/app/card_create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="67" column="20" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/app/card_detail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -550,36 +527,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/migrations/0007_create_group_permissions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="42" column="18" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/app/auth_extras.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templatetags/auth_extra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="56" selection-start-line="8" selection-start-column="56" selection-end-line="8" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/migrations/0007_create_group_permissions.py" />
+    <entry file="file://$PROJECT_DIR$/app/templates/app/auth_extras.py" />
+    <entry file="file://$PROJECT_DIR$/app/templatetags/auth_extra.py" />
     <entry file="file://$PROJECT_DIR$/app/templates/staff/transaction_delete.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
@@ -720,8 +670,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/app/activity_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="100" column="4" selection-start-line="100" selection-start-column="4" selection-end-line="100" selection-end-column="4" />
+        <state relative-caret-position="641">
+          <caret line="86" column="12" selection-start-line="86" selection-start-column="12" selection-end-line="86" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="128" column="11" lean-forward="true" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
         </state>
       </provider>
     </entry>
