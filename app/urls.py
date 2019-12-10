@@ -39,7 +39,6 @@ from app.views import (
     StaffUserPayment,
     StaffUserBankDetail,
     StaffUserCardDetail,
-
 )
 
 urlpatterns = [

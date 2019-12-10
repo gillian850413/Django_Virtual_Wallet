@@ -1,0 +1,53 @@
+.section_title{
+    h3{
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 48px;
+        color: #1F1F1F;
+        position: relative;
+        z-index: 9;
+        padding-bottom: 15px;
+        &::before{
+            position: absolute;
+            left: 0;
+            background: #5DB2FF;
+            height: 2px;
+            width: 50px;
+            content: '';
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+        }
+        @media #{$mobile_device} {
+            font-size: 30px;
+            line-height: 36px;
+        }
+        @media #{$tablet_device} {
+            font-size: 36px;
+            line-height: 42px;
+        }
+        br{
+            @media #{$mobile_device} {
+                display: none;
+            }
+        }
+    }
+    p{
+        font-size: 16px;
+        color: #727272;
+        line-height: 28px;
+        margin-bottom: 0;
+        br{
+            @media #{$mobile_device} {
+                display: none;
+            }
+        }
+
+    }
+}
+.mb-100{
+    margin-bottom: 100px;
+    @media #{$mobile_device} {
+        margin-bottom: 40px;
+    }
+}

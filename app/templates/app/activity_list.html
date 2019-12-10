@@ -22,72 +22,81 @@
             <div class="container box_1170">
                 <div class="section-top-border">
                     <h2 class="mb-30"><b style="color: black;">Pay</b></h2>
-                    <div class="progress-table-wrap">
-                        <div class="progress-table">
-
-                            <div class="table-head">
-                                <div class="date">Date</div>
-                                <div class="activity">Activity</div>
-                                <div class="category">Category</div>
-                                <div class="amount">Amount</div>
-                            </div>
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr class="table-primary">
+                                <th scope="col">Date</th>
+                                <th scope="col">Activity</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Send To</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {% for pay in pay_list %}
-                                <div class="table-row">
-                                    <div class="date">{{ pay.create_date|date:'Y/m/d' }}</div>
-                                    <div class="activity">{{ pay.description }}</div>
-                                    <div class="category">{{ pay.category }}</div>
-                                    <div class="amount">{{ pay.amount }}</div>
-                                </div>
-                                {% empty %}
-                                <div class="table-row">
-                                    <div class="date"> </div>
-                                    <div class="activity"> There is no transaction.</div>
-                                    <div class="category"> </div>
-                                    <div class="amount"> </div>
-                                </div>
+                                <tr>
+                                    <th scope="row">{{ pay.create_date|date:'Y/m/d' }}</th>
+                                    <td>{{ pay.description }}</td>
+                                    <td>{{ pay.category }}</td>
+                                    <td>{{ pay.receiver }}</td>
+                                    <td>{{ pay.amount }}</td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>There are no transactions.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             {% endfor %}
-                        </div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
 	<!-- End Align Area -->
-
-        <section>
+    <br>
+    <section>
         <div class="whole-wrap">
             <div class="container box_1170">
                 <div class="section-top-border">
                     <h2 class="mb-30"><b style="color: black;">Receive</b></h2>
-                    <div class="progress-table-wrap">
-                        <div class="progress-table">
-
-                            <div class="table-head">
-                                <div class="date">Date</div>
-                                <div class="activity">Activity</div>
-                                <div class="category">Category</div>
-                                <div class="amount">Amount</div>
-                            </div>
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr class="table-warning">
+                                <th scope="col">Date</th>
+                                <th scope="col">Activity</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Receive From</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             {% for receive in receive_list %}
-                                <div class="table-row">
-                                    <div class="date">{{ receive.create_date|date:'Y/m/d' }}</div>
-                                    <div class="activity">{{ receive.description }}</div>
-                                    <div class="category">{{ receive.category }}</div>
-                                    <div class="amount">{{ receive.amount }}</div>
-                                </div>
-                                {% empty %}
-                                <div class="table-row">
-                                    <div class="date"> </div>
-                                    <div class="activity"> There is no transaction.</div>
-                                    <div class="category"> </div>
-                                    <div class="amount"> </div>
-                                </div>
+                                <tr>
+                                    <th scope="row">{{ receive.create_date|date:'Y/m/d' }}</th>
+                                    <td>{{ receive.description }}</td>
+                                    <td>{{ receive.category }}</td>
+                                    <td>{{ receive.creator }}</td>
+                                    <td>{{ receive.amount }}</td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>There are no transactions.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
                             {% endfor %}
-                        </div>
-                    </div>
+                        </tbody>
+                    </table>
+                    <br>
                 </div>
             </div>
         </div>
     </section>
-
+    <br>
 {% endblock %}

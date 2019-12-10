@@ -67,10 +67,10 @@
                                             <li><a href="{% url 'profile' %}">User Profile</a></li>
                                         {% endif %}
 
-                                        {% if perms.app.change_transaction %}
+                                        {% if perms.app.delete_transaction %}
                                             <li><a href="{% url 'staff_user' %}">User List</a></li>
                                         {% endif %}
-                                        {% if perms.app.change_transaction %}
+                                        {% if perms.app.delete_transaction %}
                                             <li><a href="{% url 'staff_transaction' %}">Transactions</a></li>
                                         {% endif %}
 

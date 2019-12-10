@@ -1,0 +1,63 @@
+.testmonial_area{
+    .single-testmonial{
+        padding: 180px 0;
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+    .testmonial_info{
+        .quote{
+            i{
+                color: #fff;
+                font-size: 40px;
+            }
+        }
+        p{
+            color: #fff;
+            font-size: 20px;
+            line-height: 32px;
+            font-weight: 400;
+            margin-top: 12px;
+            margin-bottom: 47px;
+            br{
+                @media #{$tablet_device} {
+                    display: none;
+                }
+            }
+        }
+        h4{
+            color: #fff;
+            font-size: 13px;
+            line-height: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+            padding-top: 21px;
+            &:before{
+                position: absolute;
+                background: #fff;
+                width: 60px;
+                height: 2px;
+                content: '';
+                left: 50%;
+                @include transform(translateX(-50%));
+                top: 0;
+            }
+        }
+    }
+    .owl-carousel{
+        .owl-nav div{
+            left: 340px;
+            &.owl-next{
+                right: 340px;
+                left: auto;
+            }
+        }
+    }
+}
+.testmonial_bg_1{
+    background-image: url(../img/testmonial/1.png);
+}
+.testmonial_bg_2{
+    background-image: url(../img/testmonial/2.png);
+}

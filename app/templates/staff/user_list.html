@@ -21,9 +21,9 @@
             <div class="container box_1170">
                 <div class="section-top-border">
                     <h2 class="mb-30"><b style="color: black;">Users</b></h2>
-                    <table class="table table-hover">
+                    <table class="table table-hover table-striped">
                         <thead>
-                            <tr>
+                            <tr class="table-info">
                                 <th scope="col">#</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">First Name</th>
@@ -45,6 +45,15 @@
                                             <button class="btn rounded-0 btn-outline-primary">Profile</button>
                                         </a>
                                     </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>There are no users.</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
