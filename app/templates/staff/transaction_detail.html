@@ -32,12 +32,14 @@
                             <div class="input-group-icon mt-10">
                                  <ul class="list cat-list">
                                      <li><b style="color: black">Creator:</b>&emsp;{{ tran.creator }}</li><hr>
+                                     <li><b style="color: black">Receiver:</b>&emsp;{{ tran.receiver }}</li><hr>
                                      <li><b style="color: black">Transaction Type:</b>&emsp;{{ tran.transaction_type }}</li><hr>
                                      <li><b style="color: black">Category:</b>&emsp;{{ tran.category }}</li><hr>
                                      <li><b style="color: black">Amount:</b>&emsp;{{ tran.amount }}</li><hr>
                                      <li><b style="color: black">Description:</b>&emsp;{{ tran.description }}</li><hr>
                                      <li><b style="color: black">Payment Method:</b>&emsp;{{ tran.payment_method.method_type }}</li><hr>
                                      <li><b style="color: black">Create Date:</b>&emsp;{{ tran.create_date | date:'Y-m-d' }}</li><hr>
+                                     <li><b style="color: black">Is it completed ?:</b>&emsp;{{ tran.is_complete}}</li><hr>
                                 </ul>
                             </div>
                             <div class="input-group-icon mt-10">

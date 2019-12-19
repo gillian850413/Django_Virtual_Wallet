@@ -110,7 +110,7 @@
                                 <h3> <span>Easy Pay</span> </h3>
                                 <p>With easy pay, you can not only send and transfer money <br> within a second, but also
                                     track your spendings in few steps.</p>
-                                {% if perm.app.add_account %}
+                                {% if perms.app.add_account %}
                                     <a href="{% url 'account' %}" class="boxed-btn3">Check Wallet</a>
                                 {% endif %}
                             </div>

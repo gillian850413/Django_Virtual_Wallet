@@ -11,8 +11,8 @@ from .models import (
     Profile,
     Bank,
     Card,
-    Transaction,
-    Account)
+    Transaction
+)
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -60,7 +60,6 @@ class UserRegistrationForm(forms.ModelForm):
         confirm_password = self.cleaned_data.get('confirm_password')
         if password != confirm_password:
             self.add_error('confirm_password', 'Password and confirm password does not match.')
-
         return cleaned_data
 
     def __init__(self, *args, **kwargs):
@@ -284,7 +283,7 @@ class SendMoneyForm(forms.ModelForm):
 
     def clean_payment_method(self):
         payment = self.cleaned_data['payment_method']
-        if payment.method_type=='account' and payment.account.balance <= 0:
+        if payment.method_type == 'account' and payment.account.balance <= 0:
             message = format_html('Insufficient balance. <br> Please select another payment method or '
                                   'add a bank or card in <a href="{}">Wallet</a>.',
                                   reverse_lazy('account'))
@@ -334,7 +333,7 @@ class CompletePaymentForm(forms.ModelForm):
 
     def clean_payment_method(self):
         payment = self.cleaned_data['payment_method']
-        if payment.method_type=='account' and payment.account.balance <= 0:
+        if payment.method_type == 'account' and payment.account.balance <= 0:
             message = format_html('Account balance is 0. <br> Please select another payment method or '
                                   'add a bank or card in <a href="{}">Wallet</a>.',
                                   reverse_lazy('account'))

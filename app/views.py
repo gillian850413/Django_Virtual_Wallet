@@ -32,10 +32,6 @@ from .models import (
     PaymentMethod,
 )
 
-from .utils import (
-    PageLinksMixin,
-)
-
 class Index(View):
     def get(self, request):
         return render(request, 'index.html')
@@ -158,7 +154,7 @@ class AccountTransfer(LoginRequiredMixin, View, PermissionRequiredMixin):
         return render(request, 'app/account_transfer_confirm.html', {'account': account, 'nbar': 'account'})
 
     def post(self, request, pk):
-        Account.objects.filter(payment__method_id=self.kwargs.get('pk')).update(balance=0)
+        Account.objects.filter(id=self.kwargs.get('pk')).update(balance=0)
         return HttpResponseRedirect(reverse_lazy('account'))
 
 
@@ -651,8 +647,8 @@ class StaffUserTran(LoginRequiredMixin, ListView, PermissionRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         target_user = self.kwargs['pk']
-        context['tran_list'] = Transaction.objects.filter(Q(receiver=target_user, is_complete=True) |
-                                                          Q(creator=target_user, is_complete=True)).order_by('-create_date')
+        context['tran_list'] = Transaction.objects.filter(Q(receiver=target_user) |
+                                                          Q(creator=target_user)).order_by('-create_date')
         context['user'] = User.objects.get(id=self.kwargs.get('pk'))
         return context
 

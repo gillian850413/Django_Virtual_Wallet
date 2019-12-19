@@ -38,11 +38,11 @@
                                             <select class="form-control form-select " id="default-select" name="payment_method">
                                                 <option value="" selected disabled hidden>Payment Method</option>
                                                 {% for sender in sender_list%}
-                                                    {% if sender.method_type == 'account' and payment.account != ''%}
+                                                    {% if sender.method_type == 'account' and sender.account != ''%}
                                                         <option value={{ sender.method_id }}>{{ sender.account }}</option>
-                                                    {% elif sender.method_type == 'bank' and payment.bank != '' %}
+                                                    {% elif sender.method_type == 'bank' and sender.bank != '' %}
                                                         <option value={{ sender.method_id }}>{{ sender.bank }}</option>
-                                                    {% elif sender.method_type == 'card' and payment.card != '' %}
+                                                    {% elif sender.method_type == 'card' and sender.card != '' %}
                                                         <option value={{ sender.method_id }}>{{ sender.card }}</option>
                                                     {% endif %}
                                                 {% endfor %}
