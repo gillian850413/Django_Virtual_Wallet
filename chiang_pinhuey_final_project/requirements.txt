@@ -1,6 +1,5 @@
+asgiref==3.2.3
 certifi==2019.11.28
-django==2.2.10
-pip==20.0.2
+Django==2.2.10
 pytz==2019.3
-sqlite==3.31.1
 sqlparse==0.3.0
