@@ -2,21 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="021e0764-dfc3-4247-be76-f50530e1d12a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings/development.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings/production.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/chiang_pinhuey_final_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/chiang_pinhuey_final_project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/settings/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chiang_pinhuey_final_project/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -52,7 +60,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/templates/staff" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/migrations" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -65,18 +73,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/templates/staff" />
       <recent name="$PROJECT_DIR$/app/migrations" />
+      <recent name="$PROJECT_DIR$/app/templates/staff" />
       <recent name="$PROJECT_DIR$/app/templates/app" />
       <recent name="$PROJECT_DIR$/app/static/img/banner" />
       <recent name="$PROJECT_DIR$/templates/app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/old_db" />
       <recent name="$PROJECT_DIR$/chiang_pinhuey_final_project" />
       <recent name="$PROJECT_DIR$/chiang_pinhuey_final_project/settings" />
       <recent name="$PROJECT_DIR$/app/templates/app" />
-      <recent name="$PROJECT_DIR$/app/templates" />
-      <recent name="$PROJECT_DIR$/app/static/img/banner" />
     </key>
   </component>
   <component name="RunManager">
@@ -146,7 +154,7 @@
       <workItem from="1576277582678" duration="29000" />
       <workItem from="1576288513041" duration="461000" />
       <workItem from="1576289303199" duration="516000" />
-      <workItem from="1584574957565" duration="3201000" />
+      <workItem from="1584574957565" duration="5047000" />
     </task>
     <servers />
   </component>
@@ -165,9 +173,9 @@
       <screen x="0" y="23" width="1440" height="813" />
     </state>
     <state x="507" y="190" key="FileChooserDialogImpl/0.23.1440.813/1440.23.1920.1057@0.23.1440.813" timestamp="1584574992003" />
-    <state x="221" y="67" key="SettingsEditor" timestamp="1584577462952">
+    <state x="221" y="67" key="SettingsEditor" timestamp="1584581390999">
       <screen x="0" y="23" width="1440" height="813" />
     </state>
-    <state x="221" y="67" key="SettingsEditor/0.23.1440.813/1440.23.1920.1057@0.23.1440.813" timestamp="1584577462952" />
+    <state x="221" y="67" key="SettingsEditor/0.23.1440.813/1440.23.1920.1057@0.23.1440.813" timestamp="1584581390999" />
   </component>
 </project>
